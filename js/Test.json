@@ -1,0 +1,11 @@
+{
+	"NewsPost": [
+		"Updates": [
+			"0": "Update 0"
+		},
+		"BugFixes":{
+			"0": "BugFix 0",
+			"1": "BugFix 1"
+		}]
+	]
+}

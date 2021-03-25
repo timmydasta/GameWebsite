@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Tims Game: Home</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="author" content="Timmydasta">
+		
+		<link rel=StyleSheet href="../css/Stylesheet.css">
+		<link rel=StyleSheet href="../css/Normalize.css">
+		<script src="js/GameSiteScript.js"></script>
+		<script src="js/jquery.js"></script>
+	
+	</head>
+
+	<body>
+		
+		<header class="main-header">
+			<div class="navbar-outer">
+				<ul class="navbar">
+					<a class="nav_button" href="../news.html">News</a>
+					<a class="nav_button" href="../gameguide.html">Game Guide</a>
+					<a class="nav_button"href="../highscores.html">HighScores</a>
+				</ul>
+			</div>
+		
+			<div id="admin_toolbar">
+			</div>
+		</header>
+				
+		<main id="main">
+		
+		<article class="build">
+			
+			<header class="buildHeader">
+				<h2 class="buildNumber">Build Number: 0.21</h2>
+				<h2 class="buildDate">Date Released: 1/3/2021</h2>
+			</header>
+			
+			<div class="buildUpdates">
+				
+				<h3 class="buildUpdatesTitle">Updates:</h3>
+				
+				<ul class="updatesScroll">
+					<li class="buildUpdateText">The Interact-With popup will now display the level of skilling nodes before you attempt to interact with them.</li>
+					<li class="buildUpdateText">I've created new Dowsing nodes, positive and negative</li>
+					<li class="buildUpdateText">Assigned names to fishing spots and all fish related items</li>
+					<li class="buildUpdateText">You can now complete multiple steps of the arrow / bow fletching processes at once through the use of one menu</li>
+					<li class="buildUpdateText">The DoMenu has been reworked, most things should work as before but expect the occasional bug</li>
+					<li class="buildUpdateText">Added a rough Day / Night cycle</li>
+					<li class="buildUpdateText">Fires now emit light</li>
+					<li class="buildUpdateText">You can now add logs to a fire in order to keep it burning for longer</li>
+					<li class="buildUpdateText">Adding a log to embers will now turn it into a fire, increasing the total amount of time it will stay lit.</li>
+					<li class="buildUpdateText">Adding an additional 4 logs to a fire will turn it into a bonfire, doubling the total amount of time it will stay lit before it reverts back into a regular fire.</li>
+					<li class="buildUpdateText">You can now cook food on fires</li>
+					<li class="buildUpdateText">You can now "sit" at fires, sitting at a fire will reduce the amount of time it takes to regenerate health by half</li>
+					<li class="buildUpdateText">Updated User Creation so that it works alongside the changes added to the database over the last few builds</li>
+					<li class="buildUpdateText">If using a do menu that depends on the existence of a fire to work, the do menu will now be closed if the fire dies</li>
+					<li class="buildUpdateText">Added a bunch of new skill tutors and updated their dialogue to provide useful tips for new players</li>
+				</ul>
+				
+			</div>
+			
+			<div class="buildBugFixes">
+			
+				<h3 class="buildUpdatesTitle">WARNING:</h3>
+				
+				<ul class="bugfixesScroll">
+					<li class="buildBugFixText">The BUSH and FIRE menus aren't currently active as I will be reworking these systems over the course of the next build</li>
+				</ul>
+				
+			</div>
+			
+		</article>
+				
+		</main>
+		
+		<footer>
+			<button onclick="openAdminLogin()" class="footer_button">Admin Sign In</button>
+		</footer>
+		
+	</body>
+
+	
+</html>
+
