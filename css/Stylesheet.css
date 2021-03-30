@@ -294,6 +294,42 @@ a.skillguide_skill_button{
 	background-color: #72757d;
 }
 
+div.specificskill_grid_outline{
+	border: 2px solid black;
+	margin: 0 auto;
+	width: 95%;
+}
+
+div.specificskill_grid{
+	display: grid;
+	grid-template-areas:
+    'specificskill_Name specificskill_Level specificskill_Exp'
+    'specificskill_Description specificskill_Description specificskill_Description';
+}
+
+div.specificskill_Name,{
+	background-color: #00FF00;
+	grid-area: specificskill_Name;
+}
+
+div.specificskill_Level{
+	background-color: #00FF00;
+	grid-area: specificskill_Level;
+}
+
+div.specificskill_Exp{
+	background-color: #00FF00;
+	grid-area: specificskill_Exp;
+}
+
+div.specificskill_Description{
+	background-color: #FF0000;
+	grid-area: specificskill_Description;
+}
+
+
+
+
 article.build{
 	background-color: #72757d;
 	margin: 1em 0 0 0;

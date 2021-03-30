@@ -128,7 +128,7 @@ const openNews = function(){
 					
 					</div>
 					
-					<a class="news_button" id="news_button${i}" onclick="loadNews('news/${newsArticles[i].newsLink}.html')">View</a>
+					<a class="news_button" id="news_button${i}" onclick="loadNewsPage('news/${newsArticles[i].newsLink}.html')">View</a>
 				</div>
 				
 			</div>
@@ -146,6 +146,18 @@ const loadNewsPage = function(theLink){
         console.log(data);
     });	
 	*/
+	
+	document.getElementById("main").innerHTML =
+	`<article>
+		<header>
+			<h2>News Title</h2>
+			<p>News Date</p>
+			<p>News Type</p>
+		</header>
+		
+		<p>News Content</p>
+	</article>
+	`;
 }
 
 const openGuide = function(){
@@ -196,8 +208,8 @@ const openGuide = function(){
 }
 
 const openSkillGuide = function(){
-	document.querySelector("main").innerHTML = 
-	`<header>
+	document.querySelector("main").innerHTML = 	`
+	<header>
 		<h2 class="skillguide_header_title">Skill Guide</h2>
 		<p class="skillguide_header_text content_rewrite">
 			GAMENAME's skills represent your character's capabilities.
@@ -214,7 +226,7 @@ const openSkillGuide = function(){
 		<table class="skillguide_skills">
 			<tbody class="skillguide_skills">
 			
-				<tr class="skillguide_skill">
+			<tr class="skillguide_skill">
 					<th class="skillguide_skill_header">
 						<img class="skillguide_skillicon" src="img/SkillIcons/ArcheryIcon.png">
 						<h4 class="skillguide_skill_title">Archery</h4>
@@ -222,7 +234,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Archery')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -234,7 +246,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Endurance')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -246,7 +258,7 @@ const openSkillGuide = function(){
 						
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Health')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -258,7 +270,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Maleficium')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -270,7 +282,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Melee')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -282,7 +294,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Thaumaturgy')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -307,7 +319,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Dowsing')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -319,7 +331,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Fishing')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -331,7 +343,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Forestry')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -343,7 +355,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Horticulture')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -355,7 +367,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Hunting')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -367,7 +379,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Mining')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -391,7 +403,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Chemistry')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -404,7 +416,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Cookery')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -417,7 +429,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Crafting')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -430,7 +442,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Fletching')">Learn More</a>
 					</td>
 					
 				</tr>
@@ -444,7 +456,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Imbuing')">Learn More</a>
 					</td>
 				</tr>
 				<tr class="skillguide_skill">
@@ -455,7 +467,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Smithing')">Learn More</a>
 					</td>
 				</tr>
 			</tbody>
@@ -477,7 +489,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Athleticism')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -489,7 +501,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Bounty Hunting')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -501,7 +513,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Camaraderie')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -513,7 +525,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Firelighting')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -525,7 +537,7 @@ const openSkillGuide = function(){
 					
 					<td class="skillguide_skill_data">
 						<p class="skillguide_skill_description content_rewrite">description</p>
-						<a class="skillguide_skill_button">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Larceny')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -533,6 +545,50 @@ const openSkillGuide = function(){
 		</table>
 	<article>
 	`;
+}
+
+const openSpecificSkillGuide = function(theSkill){
+	document.querySelector("main").innerHTML = `
+	<header>
+		<h2>${theSkill}</h2>
+	</header>
+	<article>
+		<div id="specificskill_main">
+		</div>
+	</article>
+	`;
+	
+	switch(theSkill){
+		case "Forestry":
+			document.querySelector("#specificskill_main").innerHTML = `
+				<p>Opened the forestry section</p>
+				<div class="specificskill_grid_outline">
+					<div class="specificskill_grid">
+						<div class="specificskill_Name">Name</div>
+						<div class="specificskill_Level">Level</div>
+						<div class="specificskill_Exp">Exp</div>
+						<div class="specificskill_Description">
+							<td>Description</td>
+						</div>
+					</div>
+					
+					<div class="specificskill_grid">
+						<div class="specificskill_Name">Name</div>
+						<div class="specificskill_Level">Level</div>
+						<div class="specificskill_Exp">Exp</div>
+						<div class="specificskill_Description">
+							<td>Description</td>
+						</div>
+					</div>
+				</div>
+			`;
+			break;
+		case "Mining":
+			document.querySelector("#specificskill_main").innerHTML = `
+				<p>Opened the mining section</p>
+			`;
+			break;
+	}
 }
 
 const openCombatGuide = function(){
@@ -581,8 +637,9 @@ const openCombatGuide = function(){
 }
 
 const openWorldGuide = function(){
-	document.querySelector("main").innerHTML = 
-	`<header>
+	document.querySelector("main").innerHTML = `
+	
+	<header>
 		<h2 class="worldguide_header_title">World Guide</h2>
 		<p class="worldguide_header_text content_rewrite">
 			description
