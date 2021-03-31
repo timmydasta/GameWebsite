@@ -303,32 +303,34 @@ div.specificskill_grid_outline{
 div.specificskill_grid{
 	display: grid;
 	grid-template-areas:
-    'specificskill_Name specificskill_Level specificskill_Exp'
-    'specificskill_Description specificskill_Description specificskill_Description';
+    'specificskill_name specificskill_lvl specificskill_exp'
+    'specificskill_desc specificskill_desc specificskill_desc';
 }
 
-div.specificskill_Name,{
+div.specificskill_name,{
 	background-color: #00FF00;
-	grid-area: specificskill_Name;
+	grid-area: specificskill_name;
 }
 
-div.specificskill_Level{
+div.specificskill_lvl{
 	background-color: #00FF00;
-	grid-area: specificskill_Level;
+	grid-area: specificskill_lvl;
 }
 
-div.specificskill_Exp{
+div.specificskill_exp{
 	background-color: #00FF00;
-	grid-area: specificskill_Exp;
+	grid-area: specificskill_exp;
 }
 
-div.specificskill_Description{
+div.specificskill_desc{
 	background-color: #FF0000;
-	grid-area: specificskill_Description;
+	grid-area: specificskill_desc;
 }
 
-
-
+p.specificskill_name, p.specificskill_lvl, p.specificskill_exp, p.specificskill_desc{
+	font-size: 18px;
+	margin: 0 auto;
+}
 
 article.build{
 	background-color: #72757d;
