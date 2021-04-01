@@ -164,13 +164,16 @@ const openGuide = function(){
 	
 	document.getElementById("main").innerHTML =
 	`<article class="guide_article" id="guide_article_skills">
+		
+		<div class="guide_img" id="guide_img_skills" alt="A lumberjack, carpenter and chef show off their skills" title="Skillers"></div>
+		
 		<aside class="guide_aside">
 			
 			<h2 class="guide_title">Skill</h2>
 			<p class="guide_description content_rewrite">GAMENAME has 24 skills for you to master these and you'll advance through the game and deeper into the adventure!</p>
 			<a class="guide_button" id="guide_button_skills" onclick="">View</a>
-		
 		</aside>
+
 	</article>
 	
 	<article class="guide_article" id="guide_article_combat">
