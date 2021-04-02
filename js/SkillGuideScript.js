@@ -25,7 +25,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						Archery is designed to do damage from afar with little risk.
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Archery')">Learn More</a>
 					</td>
 				</tr>
@@ -37,7 +41,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill allows players to take less damage and wear better sets of armour.
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Endurance')">Learn More</a>
 					</td>
 				</tr>
@@ -49,7 +57,11 @@ const openSkillGuide = function(){
 					</th>
 						
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill allows the player to take more damage before dying. 
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Health')">Learn More</a>
 					</td>
 				</tr>
@@ -61,7 +73,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill gives the player the ability to cast offensive elemental spells and dampen the mood of their enemies with debuffs
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Maleficium')">Learn More</a>
 					</td>
 				</tr>
@@ -73,7 +89,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						Melee combat is designed to do heavier damage than the other two combat styles due to the fact that the player must be within reach of the enemies they are attacking
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Melee')">Learn More</a>
 					</td>
 				</tr>
@@ -85,7 +105,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill gives the player the ability to cast defensive spells, heal their friends, teleport and use a range of other helpful incantations that can help no matter where in the world they might be.
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Thaumaturgy')">Learn More</a>
 					</td>
 				</tr>
@@ -112,7 +136,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 					
 						<p class="skillguide_skill_description content_rewrite">
-							This skill is used to harvest energy that can be manipulated into magical weapons and armour using the Imbuing skill.
+						This skill is used to harvest energy that can be manipulated into magical weapons and armour using the Imbuing skill.
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Dowsing')">Learn More</a>
@@ -128,7 +152,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 						
 						<p class="skillguide_skill_description content_rewrite">
-							This skill allows players to catch fish that can be cooked using the Cookery skill.
+						This skill allows players to catch fish that can be cooked using the Cookery skill.
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Fishing')">Learn More</a>
@@ -144,7 +168,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 					
 						<p class="skillguide_skill_description content_rewrite">
-						description
+						This skill allows players to gather wood that can be crafted, burnt or fletched.
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Forestry')">Learn More</a>
@@ -160,7 +184,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 					
 						<p class="skillguide_skill_description content_rewrite">
-							This skill allows players to grow their own personal produce for consumption. 
+						This skill allows players to grow their own personal produce for consumption. 
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Horticulture')">Learn More</a>
@@ -174,7 +198,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+					
+						<p class="skillguide_skill_description content_rewrite">
+						This skill gives the player the ability to track and hunt animals for fur that can be attached to armour and special ingredients to be used in the Chemistry and Carpentry skills.
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Hunting')">Learn More</a>
 					</td>
 				</tr>
@@ -186,7 +214,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill allows players to gather ore that can be smelted and forged into weapons armour and tools using the Smithing skill
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Mining')">Learn More</a>
 					</td>
 				</tr>
@@ -210,7 +242,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill gives the player the ability to mix potions that can be used to boost their capabilities in combat or enhance their ability to gather resources.
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Chemistry')">Learn More</a>
 					</td>
 				</tr>
@@ -223,7 +259,11 @@ const openSkillGuide = function(){
 					</th>
 					
 					<td class="skillguide_skill_data">
-						<p class="skillguide_skill_description content_rewrite">description</p>
+						
+						<p class="skillguide_skill_description content_rewrite">
+						This skill gives the player the ability to cook food, which can be used to heal in the middle of a fight.
+						</p>
+						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Cookery')">Learn More</a>
 					</td>
 				</tr>
@@ -238,7 +278,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 						
 						<p class="skillguide_skill_description content_rewrite">
-							This skill allows players to create stronger archery armour.
+						This skill allows players to create stronger archery armour, weave bowstrings.
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Crafting')">Learn More</a>
@@ -255,7 +295,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 						
 						<p class="skillguide_skill_description content_rewrite">
-							This skill allows players to create archery weapons such as bows and arrows.
+						This skill allows players to create archery weapons such as bows and arrows.
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Fletching')">Learn More</a>
@@ -273,7 +313,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 						
 						<p class="skillguide_skill_description content_rewrite">
-							description
+						This skill allows players to create magical weapons and armour out of energy they have harvested.
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Imbuing')">Learn More</a>
@@ -288,7 +328,7 @@ const openSkillGuide = function(){
 					<td class="skillguide_skill_data">
 						
 						<p class="skillguide_skill_description content_rewrite">
-							This skill allows players to create melee weapons and armour. This skill also allows players to craft tools for a range of other skills
+						This skill allows players to create melee weapons and armour. This skill also allows players to craft tools for a range of other skills
 						</p>
 						
 						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Smithing')">Learn More</a>
@@ -333,7 +373,7 @@ const openSkillGuide = function(){
 							Breaks up the monotony of combat, kills on task give increased experience rewards.
 						</p>
 						
-						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('Bounty Hunting')">Learn More</a>
+						<a class="skillguide_skill_button" onclick="openSpecificSkillGuide('BountyHunting')">Learn More</a>
 					</td>
 				</tr>
 				
@@ -407,13 +447,21 @@ const openSkillGuide = function(){
 const openSpecificSkillGuide = function(theSkill){
 	
 	document.querySelector("main").innerHTML = `
-		<header>
-			<h2>${theSkill}</h2>
-		</header>
-		<article>
+		<article class="specificskill">
+			
+			<header class="specificskill_header">
+				<img class="specificskill_header_img" src="img/SkillIcons/${theSkill}Icon.png" alt="">
+				<h2 class="specificskill_header_title">${theSkill}</h2>
+			</header>
+			
 			<div id="specificskill_main"></div>
+			
 		</article>
+		
+		<button class="specificskill_back">Top</button>
 	`;
+	
+	if(theSkill == "BountyHunting"){ document.querySelector("h2.specificskill_header_title").innerHTML = "Bounty Hunting"; }
 	
 	switch(theSkill){
 		case "Archery":			OpenArcherySkillGuide(); 		break;	case "Endurance":		OpenEnduranceSkillGuide(); 		break;
@@ -455,18 +503,53 @@ const createGrid = function(name, items){
 
 const OpenArcherySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("archeryWeapons", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Weapons</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("archeryWeapons", 11)}
+		</div>
 	`;
 }
 
 const OpenEnduranceSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("archeryArmour", 11)}
-		${createGrid("meleeArmour", 11)}
-		${createGrid("maleficiumArmour", 11)}
-		${createGrid("thaumaturgyArmour", 11)}
+	`		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Archery Armour</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("archeryArmour", 11)}
+		</div>
+		
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Melee Armour</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("meleeArmour", 11)}
+		</div>
+		
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Maleficium Armour</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("maleficiumArmour", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Thaumaturgy Armour</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("thaumaturgyArmour", 11)}
+		</div>
 	`;
 }
 
@@ -477,52 +560,132 @@ const OpenHealthSkillGuide = function(){
 const OpenMaleficiumSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`
-		${createGrid("maleficiumWeapons", 11)}
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Weapons</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("maleficiumWeapons", 11)}
+		</div>
 	`;
 }
 
 const OpenMeleeSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("meleeWeapons", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Weapons</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("meleeWeapons", 11)}
+		</div>
 	`;
 }
 
 const OpenThaumaturgySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = e
-	`
-		${createGrid("thaumaturgyWeapons", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Weapons</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("thaumaturgyWeapons", 11)}
+		</div>
 	`;
 }
 
 const OpenDowsingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = `
-		${createGrid("light", 11)}
-		${createGrid("dark", 11)}
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Positive Energy</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("light", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header>
+				<h3 class="specificskill_grid_title">Negative Energy</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("dark", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Dowsing Rods</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("dowsingRods", 11)}
+		</div>
 	`
 }
 
 const OpenFishingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("fish", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Fish</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("fish", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Fishing Rods</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("fishingRods", 11)}
+		</div>
 	`;
 }
 
 const OpenForestrySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("trees", 11)}
-		${createGrid("axes", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Trees</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("trees", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Axes</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("axes", 11)}
+		</div>
 	`;
 			
 }
 
 const OpenHorticultureSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("bushes", 11)}
-		${createGrid("growTrees", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Bushes</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("bushes", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Trees</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("growTrees", 11)}
+		</div>
 	`;
 }
 
@@ -531,8 +694,23 @@ const OpenHuntingSkillGuide = function(){
 }
 
 const OpenMiningSkillGuide = function(){
-	document.querySelector("#specificskill_main").innerHTML = `
-		${createGrid("ores", 11)}
+	document.querySelector("#specificskill_main").innerHTML = 
+	`
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Ores</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("ores", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Pickaxes</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("pickaxes", 11)}
+		</div>
 	`;
 }
 
@@ -542,8 +720,14 @@ const OpenChemistrySkillGuide = function(){
 
 const OpenCookerySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("cookFish", 11)};
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Fish</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("cookFish", 11)};
+		</div>
 	`;
 }
 
@@ -553,28 +737,78 @@ const OpenCraftingSkillGuide = function(){
 
 const OpenFletchingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("fletchBows", 11)};
-		${createGrid("fletchArrows", 11)};
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Bows</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("fletchBows", 11)};
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Arrows</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("fletchArrows", 11)};
+		</div>
 	`;
 }
 
 const OpenImbuingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("lightWeapons", 11)}
-		${createGrid("darkWeapons", 11)}
-
-		${createGrid("lightArmour", 11)}
-		${createGrid("darkArmour", 11)}
+	`	<div class="specificskill_grid_div">
+			<header>
+				<h3 class="specificskill_grid_title">Thaumaturgy Staves</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("lightWeapons", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Maleficium Staves</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Thaumaturgy Robes</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("lightArmour", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Maleficium Robes</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("darkArmour", 11)}
+		</div>
 	`;
 }
 
 const OpenSmithingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("meleeWeapons", 11)}
-		${createGrid("meleeArmour", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Weapons</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("meleeWeapons", 11)}
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Armour</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("meleeArmour", 11)}
+		</div>
 	`;
 }
 
@@ -583,7 +817,7 @@ const OpenAthleticismSkillGuide = function(){
 }
 
 const OpenBountyHuntingSkillGuide = function(){
-	
+
 }
 
 const OpenCamaraderieSkillGuide = function(){
@@ -593,14 +827,34 @@ const OpenCamaraderieSkillGuide = function(){
 const OpenCarpentrySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`
-		${createGrid("planks", 11)};
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Planks</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("planks", 11)};
+		</div>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Nails</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("planks", 11)};
+		</div>
 	`;
 }
 
 const OpenFirelightingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		${createGrid("burnLogs", 11)}
+	`	
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Fires</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("burnLogs", 11)}
+		</div>
 	`;
 }
 

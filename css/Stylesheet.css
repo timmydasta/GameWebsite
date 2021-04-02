@@ -39,26 +39,6 @@ a {
 	font-size: 25px;
 }
 
-.nav_button:link{
-	color: #FFFFFF;
-	background-color: #72757d;
-}
-
-.nav_button:visited{
-	color: #FFFFFF;
-	background-color: #72757d;
-}
-
-.nav_button:hover{
-	color: #005BBB;
-	background-color: #979aa5;
-}
-
-.nav_button:active{
-	color: #009EFF;
-	background-color: #979aa5;
-}
-
 /**HEADER**************************************************************/
 header{
 	width: 100%;
@@ -95,7 +75,12 @@ a.nav_button{
 	width: 100%;
 	height: 60%;
 	text-align: center;
-	margin: auto 0;
+	margin: auto;
+}
+
+.nav_button:hover{
+	color: #005BBB;
+	background-color: #979aa5;
 }
 
 /**MAIN CONTENT
@@ -175,6 +160,11 @@ a.news_button{
 	background-color: #72757d;
 }
 
+a.news_button:hover{
+	color: #005BBB;
+	background-color: #979aa5;
+}
+
 /** MAIN GUIDE PAGE 
 ********************************************************/
 
@@ -229,6 +219,19 @@ a.guide_button{
 	background-color: #72757d;
 }
 
+a.guide_button:hover{
+	color: #005BBB;
+	background-color: #979aa5;
+}
+
+div.guide_breadcrumbs{
+	display: flex;
+	border: 2px solid black;
+	background-color: #72757d;
+}
+a.guide_breadcrumb{
+	
+}
 
 /** SKILL GUIDE PAGE 
 ********************************************************/
@@ -305,10 +308,64 @@ a.skillguide_skill_button{
 	background-color: #72757d;
 }
 
-div.specificskill_grid_outline{
+a.skillguide_skill_button:hover{
+	color: #005BBB;
+	background-color: #979aa5;
+}
+
+article.specificskill{
 	border: 2px solid black;
-	margin: 0 auto;
+}
+
+header.specificskill_header{
+	display: flex;
+	margin: 0 auto 10px auto;
+	background-color: #72757d;
+	border-bottom: 2px solid black;
+}
+
+img.specificskill_header_img{
+	margin: auto 10px;
+	width: 60px;
+	height: 60px;
+}
+
+h2.specificskill_header_title{
+	color: #FFFFFF;
+}
+
+button.specificskill_top{
+	position:fixed;
+	bottom: 70px;
+	right: 70px;
+	min-height: 45px;
+	min-width: 45px;
+}
+
+div.specificskill_grid_div{
+	border: 2px solid black;
+	margin: 0 auto 10px auto;
 	width: 95%;
+}
+
+header.specificskill_grid_header{
+	display: flex;
+	background-color: #72757d;
+	border-bottom: 2px solid black;
+}
+
+h3.specificskill_grid_title{
+	margin:  auto 10px;
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 20px;
+	height: 22px;
+	vertical-align: middle;
+}
+
+button.specificskill_grid_dropdown{
+	min-width: 45px;
+	min-height: 45px;
 }
 
 div.specificskill_grid{
@@ -318,8 +375,7 @@ div.specificskill_grid{
     'specificskill_desc specificskill_desc specificskill_desc';
 }
 
-div.specificskill_name,{
-	background-color: #00FF00;
+div.specificskill_name{
 	grid-area: specificskill_name;
 }
 
@@ -329,7 +385,6 @@ div.specificskill_lvl{
 }
 
 div.specificskill_exp{
-	background-color: #00FF00;
 	grid-area: specificskill_exp;
 }
 
@@ -339,6 +394,14 @@ div.specificskill_desc{
 }
 
 p.specificskill_name, p.specificskill_lvl, p.specificskill_exp, p.specificskill_desc{
+	font-size: 18px;
+	margin: 0 auto;
+}
+
+/** WORLD GUIDE PAGE 
+********************************************************/
+
+p.worldguide_text{
 	font-size: 18px;
 	margin: 0 auto;
 }

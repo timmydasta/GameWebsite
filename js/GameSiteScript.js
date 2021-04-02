@@ -102,7 +102,7 @@ const findAllUsers = function(){
 }
 
 const openNews = function(){
-	
+		
 	document.getElementById("main").innerHTML = "";
 	let i = 0;
 	
@@ -161,7 +161,7 @@ const loadNewsPage = function(theLink){
 }
 
 const openGuide = function(){
-	
+
 	document.getElementById("main").innerHTML =
 	`<article class="guide_article" id="guide_article_skills">
 		
@@ -213,6 +213,12 @@ const openGuide = function(){
 const openCombatGuide = function(){
 	document.querySelector("main").innerHTML = 
 	`<header>
+	
+		<div class="guide_breadcrumbs">
+			<a class="guide_breadcrumb">Guides &gt;</a>
+			<a class="guide_breadcrumb">Combat Guide<a>
+		</div>
+		
 		<h2 class="combatguide_header_title">Combat Guide</h2>
 		<p class="combatguide_header_text content_rewrite">
 			GAMENAME's combat is exciting and challenging, with many different options and abilities to choose from. Thousands of armour and weapon combinations are available, and the strongest players are those who prepare well for battle.
@@ -275,6 +281,88 @@ const openWorldGuide = function(){
 		<h2 class="worldguide_title">Factions</h2>
 		<p class="content_rewrite">description</p>
 		
+	</article>
+	
+	<article class="worldguide_article">
+		<h2 class="worldguide_title">Characters</h2>
+		<p class="content_rewrite">description</p>
+		
+		<h3 class="worldguide_title">The Gods</h3>
+		
+		<h4 class="worldguide_title">Erdolle (ER- DOLL) The God of Tradition.</h4>
+		<p class="worldguide_text content_rewrite">
+		Erdolle was born a mortal and ascended to godhood.
+		Erdolle is a staunch believer in the old ways of doing things. Rella approached him in mortal form and eased him out of this mindset over time.
+		Together they had a family and grew old together before Rella revealed her true nature. Initially reluctant to become a god, he was convinced to learn more about her world.
+		After Celiele comes to the world and convinces humanity to build a better world, he reverts back to his old beliefs and leaves the planet.
+		ISTJ – SI, TE, FI, NE
+		</p>
+		
+		<h4 class="worldguide_title">Rella (RELL- AH) The Goddess of Diplomacy.</h4>
+		<p class="worldguide_text content_rewrite">
+		Rella is a goddess born from two mortal-born Gods, a god of sunlight and a goddess of rain. She found her place in the universe as a diplomat between other Gods.
+		During a time of great dispute she watched over her parent’s homeworld and ended up falling in love with Erdolle. Together they had a family and grew old. Not wanting to part with them, she split her power eight ways and transferred it to her family members. Returning to her role as a diplomat, her reduced power was noticed relatively quickly. As a result of this she was killed by a young, naiive war god. Her family took her body and used her energy to form a beautiful planet around her. 
+		INFJ – NI, FE, TI, SE
+		</p>
+		
+		<h4 class="worldguide_title">Arrale (AH- RA- LEE) The God of Textiles.</h4>
+		<p class="worldguide_text content_rewrite">
+		Arrale was born a mortal; he is the eldest child of Erdolle and Rella. 
+		After Celiele comes to the world and convinces humanity to build a better world, Arrale left with his father. 
+		ISTP – TI, SE, NI, FE
+		</p>
+		
+		<h4 class="worldguide_title">Ukin (OO - KIN), Goddess of the Hearth.</h4>
+		<p class="worldguide_text content_rewrite">
+		Ukin was born a mortal and ascended to godhood; she is the second child of Erdolle and Rella.
+		After Celiele comes to the world and convinces humanity to build a better world, Ukin left with her father. 
+		ESFJ – FE, SI, NE, FI
+		</p>
+		
+		<h4 class="worldguide_title">Ajeeha (AH- GEE- AH), God of Rivers</h4>
+		<p class="worldguide_text content_rewrite">
+		Ajeeha was born a mortal and ascended to godhood; she is the third child of Erdolle and Rella. 
+		As a mortal, Ajeeha enjoyed watercolour painting in her spare time. As a god she used this talent to paint the rivers of the garden planet.
+		After Celiele comes to the world and convinces humanity to build a better world, Ajeeha left the planet with Olarah.
+		ISFP – FI, SE, NI, TE
+		</p>
+		
+		<h4 class="worldguide_title">Wahieyle (WAH - HE -ILL), God of Breezes</h4>
+		<p class="worldguide_text content_rewrite">
+		Wahieyle was born a mortal and ascended to godhood; he is the fourth child of Erdolle and Rella. 
+		He is the quietest of the children and tends to whisper when he talks.
+		After Celiele comes to the world and convinces humanity to build a better world, Wahieyle retreats deep into the forests of the planet, leaving him the only remaining original god left on the planet.
+		ISFJ – SI, FE, TI, NE
+		</p>
+		
+		<h4 class="worldguide_title">Rou (ROW): God of Pathways</h4>
+		<p class="worldguide_text content_rewrite">
+		Rou was born a mortal and ascended to godhood; he is the fifth child of Erdolle and Rella. As a child he was the most adventurous of the lot. 
+		Sometime after Rella’s death, he wanted to explore the worlds outside of the Garden so he constructed his own methods of teleportation. Over the course of his journey he met and became friends with numerous forms of life, and offered them a place to live on his mother’s planet.
+		Unaware that Celiele was a goddess, he helped her and humanity flee the destruction caused by Kejeir and Cintr.
+		After Celiele comes to the world and convinces humanity to build a better world, he left the planet to continue his journey across the cosmos, however he does drop in occasionally to visit Wahieyle.
+
+		ENFP – NE, FI, TE, SI
+		</p>
+		
+		<h4 class="worldguide_title">Olarah (OH-LA-RAH), God of Wellbeing</h4>
+		<p class="worldguide_text content_rewrite">
+		Olarah was born a mortal and ascended to godhood; he is the sixth child of Erdolle and Rella and is Elarah’s twin brother.
+		As a child Olarah looked after the sick animals on the farm, as an adult he studied medicine in order to become a doctor.
+		As a god, he looked after the races that Rou brought from other worlds as they were often wounded upon arrival.
+		When Celiele arrived on the garden planet, he fell in love with her and her ambitions for a better world. However these feelings weren’t reciprocated, so he was convinced to leave with Ajeeha to find people worthy of his care. 
+		INFP – FI, NE, SI, TE
+		</p>
+		
+		<h4 class="worldguide_title">Elarah (EL-AR-AH), Goddess of Storms</h4>
+		<p class="worldguide_text content_rewrite">
+		Elarah was born a mortal and ascended to godhood; she is the seventh and youngest child of Erdolle and Rella and is Olarah’s twin sister.
+		Elarah loves to fight, and fought the champions of every race that Rou brought to the garden planet. 
+		After Celiele comes to the world and convinces humanity to build a better world, she left the garden to find a mentor, and the power needed to kill her mother’s murderer. 
+		ESTP – SE, TI, FE, NI
+		</p>
+		
+		
 	</article>`;
 }
 
@@ -290,6 +378,7 @@ const openQuestGuide = function(){
 }
 
 const openHS = function(){
+	
 	document.getElementById("main").innerHTML = 
 	`<div class="HighScores">
 			
@@ -364,8 +453,8 @@ const openHS = function(){
 	openHSPage("Total Level");
 }
 
-
 const openForums = function(){
+	
 	document.getElementById("main").innerHTML = 
 	`<article>
 		<h2>Forums</h2>
@@ -373,6 +462,7 @@ const openForums = function(){
 }
 
 const openMedia = function(){
+		
 	document.getElementById("main").innerHTML = 
 	`<article>
 		<h2>Screenshots</h2>
@@ -382,6 +472,7 @@ const openMedia = function(){
 		<h2>Wallpapers</h2>
 	<article>`;
 }
+
 
 
 start();
