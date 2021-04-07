@@ -122,8 +122,8 @@ div.news_body{
 
 img.news_img{
 	margin: 1em;
-	min-width: 120px;
-	min-height: 80px;
+	min-width: 160px;
+	min-height: 100px;
 	border: 1px solid black;
 }
 
@@ -134,19 +134,25 @@ div.news_main{
 
 div.news_info{
 	display:flex;
-	height: 50%;
+	height: 20px;
 	margin: 0 auto;
+}
+
+p.news_brief{
+	margin: 0 auto;
+	height: 40px;
+	font-size: 18px;
 }
 
 p.news_type{
 	text-align: left;
-	font-size: 18px;
+	font-size: 16px;
 	margin: 0 auto 0 0;
 }
 
 p.news_date{
 	text-align: right;
-	font-size: 18px;
+	font-size: 16px;
 	margin: 0 0 0 auto;
 }
 
@@ -227,14 +233,37 @@ a.guide_button:hover{
 div.guide_breadcrumbs{
 	display: flex;
 	border: 2px solid black;
-	background-color: #72757d;
+	border-bottom: none;
+	background-color: #979aa5;
 }
+
 a.guide_breadcrumb{
-	
+	font-size: 18px;
+	padding: 0.2em;
+}
+
+a.guide_breadcrumb:hover{
+	color: #FFFFFF;
 }
 
 /** SKILL GUIDE PAGE 
 ********************************************************/
+
+article.skillguide{
+	border: 2px solid black;
+}
+
+header.skillguide_header{
+	background-color: #72757d;
+	border-bottom: 2px solid black;
+}
+
+h2.skillguide_header_title{
+	margin: 0;
+	color: #FFFFFF;
+	padding: 0.5em;
+	font-size: 24px
+}
 
 p.skillguide_header_text{
 	font-size: 18px;
@@ -243,7 +272,11 @@ p.skillguide_header_text{
 article.skillguide_category{
 	border: 2px solid black;
 	padding: 0 10px 10px 10px;
-	margin: 10px auto;
+	margin: 10px 10px 0 10px;
+}
+
+h3.skillguide_category_title{
+	margin: 0 auto;
 }
 
 p.skillguide_category_description{
@@ -398,13 +431,116 @@ p.specificskill_name, p.specificskill_lvl, p.specificskill_exp, p.specificskill_
 	margin: 0 auto;
 }
 
+/** COMBAT GUIDE PAGE
+********************************************************/
+article.combatguide{
+	border: 2px solid black;
+}
+
+header.combatguide_header{
+	background-color: #72757d;
+	border-bottom: 2px solid black;
+}
+
+h2.combatguide_header_title{
+	margin: 0;
+	color: #FFFFFF;
+	padding: 0.5em;
+	font-size: 24px
+}
+
+p.combatguide_header_text{
+	font-size: 18px;
+}
+
+article.combatguide_article{
+	border: 2px solid black;
+	padding: 0 10px 10px 10px;
+	margin: 10px 10px 0 10px;
+}
+
+h3.combatguide_article_title{
+	margin: 0 auto;
+}
+
+p.combatguide_article_description{
+	font-size: 18px;
+}
+
 /** WORLD GUIDE PAGE 
 ********************************************************/
 
-p.worldguide_text{
+article.worldguide{
+	border: 2px solid black;
+}
+
+header.worldguide_header{
+	background-color: #72757d;
+	border-bottom: 2px solid black;
+}
+
+h2.worldguide_header_title{
+	margin: 0;
+	color: #FFFFFF;
+	padding: 0.5em;
+	font-size: 24px
+}
+
+p.worldguide_header_text{
 	font-size: 18px;
+}
+
+article.worldguide_article{
+	border: 2px solid black;
+	padding: 0 10px 10px 10px;
+	margin: 10px 10px 0 10px;
+}
+
+h3.worldguide_article_title{
 	margin: 0 auto;
 }
+
+p.worldguide_article_description{
+	font-size: 18px;
+}
+
+/** QUEST GUIDE PAGE 
+********************************************************/
+
+article.questguide{
+	border: 2px solid black;
+}
+
+header.questguide_header{
+	background-color: #72757d;
+	border-bottom: 2px solid black;
+}
+
+h2.questguide_header_title{
+	margin: 0;
+	color: #FFFFFF;
+	padding: 0.5em;
+	font-size: 24px
+}
+
+p.questguide_header_text{
+	font-size: 18px;
+}
+
+article.questguide_article{
+	border: 2px solid black;
+	padding: 0 10px 10px 10px;
+	margin: 10px 10px 0 10px;
+}
+
+h3.questguide_article_title{
+	margin: 0 auto;
+}
+
+p.questguide_article_description{
+	font-size: 18px;
+}
+
 
 article.build{
 	background-color: #72757d;
