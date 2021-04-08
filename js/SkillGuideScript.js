@@ -502,11 +502,11 @@ const createGrid = function(name, items){
 	while(i < items){
 		gridTemplate +=
 		`<div class="specificskill_grid" 	  id="${name}_specificskill_grid_T${i}">
-			
-			<div class="specificskill_name"><p class="specificskill_desc" id="${name}_specificskill_name_T${i}">Name</p> </div>
-			<div class="specificskill_lvl"> <p class="specificskill_desc" id="${name}_specificskill_lvl_T${i}" >Level</p></div>
-			<div class="specificskill_exp">	<p class="specificskill_exp"  id="${name}_specificskill_exp_T${i}" >EXP</p>	 </div>
-			<div class="specificskill_desc"><p class="specificskill_desc" id="${name}_specificskill_desc_T${i}">Descr</p></div>
+			<div class="specificskill_img" id="${name}_img_T${i}"></div>
+			<div class="specificskill_name"><p class="specificskill_desc" id="${name}_name_T${i}">Name</p> </div>
+			<div class="specificskill_lvl"> <p class="specificskill_desc" id="${name}_lvl_T${i}" >Level</p></div>
+			<div class="specificskill_exp">	<p class="specificskill_exp"  id="${name}_exp_T${i}" >EXP</p>	 </div>
+			<div class="specificskill_desc"><p class="specificskill_desc" id="${name}_desc_T${i}">Descr</p></div>
 		
 		</div>`;
 		
@@ -517,16 +517,60 @@ const createGrid = function(name, items){
 }
 
 const OpenArcherySkillGuide = function(){
+	
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
+		<p class="content_rewrite">Archery is designed to do damage from afar with little risk.</p>
+		
+		<h3>Bows</h3>
+		<p>As your Archery skill improves, you can use stronger bows. You can create stronger bows using the Fletching skill.</p>
+		
 		<div class="specificskill_grid_div">
 			<header class="specificskill_grid_header">
 				<h3 class="specificskill_grid_title">Weapons</h3>
 				<button class="specificskill_grid_dropdown"></button>
 			</header>
-			${createGrid("archeryWeapons", 11)}
+			${createGrid("archeryBows", 11)}
 		</div>
 	`;
+	
+	document.querySelector("#archeryBows_img_T0").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST0.png">`; 	document.querySelector("#archeryBows_name_T0").innerHTML = "Dridych Bow";		document.querySelector("#archeryBows_lvl_T0").innerHTML = "1";
+	document.querySelector("#archeryBows_img_T1").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST1.png">`; 	document.querySelector("#archeryBows_name_T1").innerHTML = "Redring Bow";		document.querySelector("#archeryBows_lvl_T1").innerHTML = "10";
+	document.querySelector("#archeryBows_img_T2").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST2.png">`; 	document.querySelector("#archeryBows_name_T2").innerHTML = "Arnach Bow";		document.querySelector("#archeryBows_lvl_T2").innerHTML = "20";
+	document.querySelector("#archeryBows_img_T3").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST3.png">`; 	document.querySelector("#archeryBows_name_T3").innerHTML = "Twainleaf Bow";		document.querySelector("#archeryBows_lvl_T3").innerHTML = "30";
+	document.querySelector("#archeryBows_img_T4").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST4.png">`; 	document.querySelector("#archeryBows_name_T4").innerHTML = "Barowin Bow";		document.querySelector("#archeryBows_lvl_T4").innerHTML = "40";
+	document.querySelector("#archeryBows_img_T5").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST5.png">`; 	document.querySelector("#archeryBows_name_T5").innerHTML = "Augerwood Bow";		document.querySelector("#archeryBows_lvl_T5").innerHTML = "50";
+	document.querySelector("#archeryBows_img_T6").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST6.png">`; 	document.querySelector("#archeryBows_name_T6").innerHTML = "Wahieyle Bow";		document.querySelector("#archeryBows_lvl_T6").innerHTML = "60";
+	document.querySelector("#archeryBows_img_T7").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST7.png">`; 	document.querySelector("#archeryBows_name_T7").innerHTML = "Nadela Bow";		document.querySelector("#archeryBows_lvl_T7").innerHTML = "70";
+	document.querySelector("#archeryBows_img_T8").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST8.png">`; 	document.querySelector("#archeryBows_name_T8").innerHTML = "Sunderfrond Bow";	document.querySelector("#archeryBows_lvl_T8").innerHTML = "80";
+	document.querySelector("#archeryBows_img_T9").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST9.png">`;	document.querySelector("#archeryBows_name_T9").innerHTML = "Evehnscrest Bow";	document.querySelector("#archeryBows_lvl_T9").innerHTML = "90";
+	document.querySelector("#archeryBows_img_T10").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWSTX.png">`; 	document.querySelector("#archeryBows_name_T10").innerHTML = "Dayveil Bow";		document.querySelector("#archeryBows_lvl_T10").innerHTML = "100";
+
+	document.querySelector("#specificskill_main").innerHTML += 
+	`	
+		<h3>Arrows</h3>
+		<p>As your Archery skill improves, you can use stronger arrows. You can create stronger arrows using the Fletching and Smithing skills.</p>
+		
+		<div class="specificskill_grid_div">
+			<header class="specificskill_grid_header">
+				<h3 class="specificskill_grid_title">Arrows</h3>
+				<button class="specificskill_grid_dropdown"></button>
+			</header>
+			${createGrid("archeryArrows", 11)}
+		</div>
+	`;
+		
+	document.querySelector("#archeryArrows_img_T0").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT0.png">`;	document.querySelector("#archeryArrows_name_T0").innerHTML = "Tokanum Arrows";		document.querySelector("#archeryArrows_lvl_T0").innerHTML = "1";
+	document.querySelector("#archeryArrows_img_T1").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT1.png">`;	document.querySelector("#archeryArrows_name_T1").innerHTML = "Sachium Arrows";		document.querySelector("#archeryArrows_lvl_T1").innerHTML = "10";
+	document.querySelector("#archeryArrows_img_T2").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT2.png">`;	document.querySelector("#archeryArrows_name_T2").innerHTML = "Perseum Arrows";		document.querySelector("#archeryArrows_lvl_T2").innerHTML = "20";
+	document.querySelector("#archeryArrows_img_T3").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT3.png">`;	document.querySelector("#archeryArrows_name_T3").innerHTML = "Fortifidium Arrows";	document.querySelector("#archeryArrows_lvl_T3").innerHTML = "30";
+	document.querySelector("#archeryArrows_img_T4").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT4.png">`;	document.querySelector("#archeryArrows_name_T4").innerHTML = "Aglemium Arrows";		document.querySelector("#archeryArrows_lvl_T4").innerHTML = "40";
+	document.querySelector("#archeryArrows_img_T5").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT5.png">`;	document.querySelector("#archeryArrows_name_T5").innerHTML = "Ukinum Arrows";		document.querySelector("#archeryArrows_lvl_T5").innerHTML = "50";
+	document.querySelector("#archeryArrows_img_T6").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT6.png">`;	document.querySelector("#archeryArrows_name_T6").innerHTML = "Melium Arrows";		document.querySelector("#archeryArrows_lvl_T6").innerHTML = "60";
+	document.querySelector("#archeryArrows_img_T7").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT7.png">`;	document.querySelector("#archeryArrows_name_T7").innerHTML = "Frauws Arrows";		document.querySelector("#archeryArrows_lvl_T7").innerHTML = "70";
+	document.querySelector("#archeryArrows_img_T8").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT8.png">`;	document.querySelector("#archeryArrows_name_T8").innerHTML = "Pyranidium Arrows";	document.querySelector("#archeryArrows_lvl_T8").innerHTML = "80";
+	document.querySelector("#archeryArrows_img_T9").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT9.png">`;	document.querySelector("#archeryArrows_name_T9").innerHTML = "Aresem Arrows";		document.querySelector("#archeryArrows_lvl_T9").innerHTML = "90";
+	document.querySelector("#archeryArrows_img_T10").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWTX.png">`;	document.querySelector("#archeryArrows_name_T10").innerHTML = "Ellexium Arrows";	document.querySelector("#archeryArrows_lvl_T10").innerHTML = "100";
 }
 
 const OpenEnduranceSkillGuide = function(){

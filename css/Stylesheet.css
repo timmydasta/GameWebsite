@@ -404,8 +404,19 @@ button.specificskill_grid_dropdown{
 div.specificskill_grid{
 	display: grid;
 	grid-template-areas:
-    'specificskill_name specificskill_lvl specificskill_exp'
-    'specificskill_desc specificskill_desc specificskill_desc';
+    'specificskill_img specificskill_name specificskill_lvl specificskill_exp'
+    'specificskill_img specificskill_desc specificskill_desc specificskill_desc';
+}
+
+div.specificskill_img{
+	height: 80px;
+	width: 80px;
+	grid-area: specificskill_img;
+}
+
+img.specificskill_img{
+	height: 90%;
+	margin: auto;
 }
 
 div.specificskill_name{

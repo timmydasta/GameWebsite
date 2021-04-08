@@ -107,6 +107,7 @@ const openNews = function(){
 	let i = 0;
 	
 	while(i < newsArticles.length){
+		
 		document.getElementById("main").innerHTML += 
 		`<article class="news_article" id="news_article${i}">
 		
@@ -116,12 +117,12 @@ const openNews = function(){
 			
 			</header>
 			
-			<div class="news_body" class="news_body${i}">
+			<div class="news_body">
 				
-				<img class="news_img" class="news_img${i}">
+				<img class="news_img" id="news_img${i}" src="img/PNG/news-${newsArticles[i].newsType}.png">
 				
-				<div class="news_main" class="news_main${i}">
-					<div class="news_info"   id="news_info${i}">
+				<div class="news_main">
+					<div class="news_info">
 						
 						<p class="news_type" id="news_type${i}">${newsArticles[i].newsType}</p>
 						<p class="news_date" id="news_date${i}">${newsArticles[i].newsDate}</p>
