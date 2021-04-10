@@ -109,32 +109,33 @@ const openNews = function(){
 	while(i < newsArticles.length){
 		
 		document.getElementById("main").innerHTML += 
-		`<article class="news_article" id="news_article${i}">
-		
-			<header class="news_header" id="news_header">
-				
-				<h2 class="news_title" id="news_title${i}">${newsArticles[i].newsTitle}</h2>
+		`
+		<a class="news_button" id="news_button${i}" onclick="loadNewsPage('news/${newsArticles[i].newsLink}.html')">
 			
-			</header>
+			<article class="news_article" id="news_article${i}">
 			
-			<div class="news_body">
-				
 				<img class="news_img" id="news_img${i}" src="img/PNG/news-${newsArticles[i].newsType}.png">
-				
-				<div class="news_main">
-					<div class="news_info">
-						
-						<p class="news_type" id="news_type${i}">${newsArticles[i].newsType}</p>
-						<p class="news_date" id="news_date${i}">${newsArticles[i].newsDate}</p>
 					
-					</div>
+				<div div class="news_main">
+					<header class="news_header" id="news_header">
+					
+						<h2 class="news_title" id="news_title${i}">${newsArticles[i].newsTitle}</h2>
+							
+							<div class="news_typedate">
+								<p class="news_type" id="news_type${i}">${newsArticles[i].newsType}</p>
+								<p class="news_date" id="news_date${i}">${newsArticles[i].newsDate}</p>
+							</div>
+				
+					</header>
+					
 					<p class="news_brief" id="news_brief${i}">News description</p>
-					<a class="news_button" id="news_button${i}" onclick="loadNewsPage('news/${newsArticles[i].newsLink}.html')">View</a>
+					
 				</div>
 				
-			</div>
+			</article>
 			
-		</article>`;
+		</a>
+		`;
 		
 		i++;
 	}
@@ -178,6 +179,9 @@ const openGuide = function(){
 	</article>
 	
 	<article class="guide_article" id="guide_article_combat">
+	
+		<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
+		
 		<aside class="guide_aside">
 			
 			<h2 class="guide_title">Combat</h2>
@@ -188,6 +192,9 @@ const openGuide = function(){
 	</article>
 	
 	<article class="guide_article" id="guide_article_world">
+	
+		<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
+	
 		<aside class="guide_aside">
 			
 			<h2 class="guide_title">The World</h2>
@@ -198,6 +205,9 @@ const openGuide = function(){
 	</article>
 	
 	<article class="guide_article" id="guide_article_quests">
+		
+		<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
+		
 		<aside class="guide_aside">
 			
 			<h2 class="guide_title">Quests</h2>
