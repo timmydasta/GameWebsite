@@ -114,9 +114,11 @@ const openNews = function(){
 			
 			<article class="news_article" id="news_article${i}">
 			
-				<img class="news_img" id="news_img${i}" src="img/PNG/news-${newsArticles[i].newsType}.png">
+				<div class="news_img">
+					<img class="news_img" id="news_img${i}" src="img/PNG/news-${newsArticles[i].newsType}.png">
+				</div>
 					
-				<div div class="news_main">
+				<div class="news_main">
 					<header class="news_header" id="news_header">
 					
 						<h2 class="news_title" id="news_title${i}">${newsArticles[i].newsTitle}</h2>
@@ -167,54 +169,73 @@ const openGuide = function(){
 	document.getElementById("main").innerHTML =
 	`<article class="guide_article" id="guide_article_skills">
 		
-		<div class="guide_img" id="guide_img_skills" alt="A lumberjack, carpenter and chef show off their skills" title="Skillers"></div>
-		
-		<aside class="guide_aside">
+		<a class="guide_button" id="guide_button_skills">
 			
-			<h2 class="guide_title">Skill</h2>
-			<p class="guide_description content_rewrite">GAMENAME has 24 skills for you to master these and you'll advance through the game and deeper into the adventure!</p>
-			<a class="guide_button" id="guide_button_skills" onclick="">View</a>
-		</aside>
-
+			<div class="guide_img_shell">
+				<div class="guide_img" id="guide_img_skills" alt="A lumberjack, carpenter and chef show off their skills" title="Skillers"></div>
+			</div>
+			
+			<aside class="guide_aside guide_aside_right">
+				
+				<h2 class="guide_title">Skill</h2>
+				<p class="guide_description content_rewrite">GAMENAME has 24 skills for you to master these and you'll advance through the game and deeper into the adventure!</p>
+			</aside>
+			
+		</a>
+		
 	</article>
 	
 	<article class="guide_article" id="guide_article_combat">
 	
-		<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
-		
-		<aside class="guide_aside">
+		<a class="guide_button" id="guide_button_combat" onclick="">
 			
-			<h2 class="guide_title">Combat</h2>
-			<p class="guide_description content_rewrite">Looking for a fight? In GAMENAME you can become the strongest of all warriors, master the art of destruction and creation through magic, or efficiently take out your targets from afar with a barrage of arrows</p>
-			<a class="guide_button" id="guide_button_combat" onclick="">View</a>
-		
-		</aside>
+			<div class="guide_img_shell">
+				<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
+			</div>
+			
+			<aside class="guide_aside guide_aside_left">
+				
+				<h2 class="guide_title">Combat</h2>
+				<p class="guide_description content_rewrite">Looking for a fight? In GAMENAME you can become the strongest of all warriors, master the art of destruction and creation through magic, or efficiently take out your targets from afar with a barrage of arrows</p>
+				
+			</aside>
+		</a>
 	</article>
 	
 	<article class="guide_article" id="guide_article_world">
 	
-		<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
-	
-		<aside class="guide_aside">
+		<a class="guide_button" id="guide_button_world" onclick="">
 			
-			<h2 class="guide_title">The World</h2>
-			<p class="guide_description content_rewrite">There's a whole world to explore when you play GAMENAME; from ruined cities and towns, to dungeons and general stores</p>
-			<a class="guide_button" id="guide_button_world" onclick="">View</a>
+			<div class="guide_img_shell">
+				<div class="guide_img" id="guide_img_skills" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
+			</div>
+			
+			<aside class="guide_aside guide_aside_right">
+				
+				<h2 class="guide_title">The World</h2>
+				<p class="guide_description content_rewrite">There's a whole world to explore when you play GAMENAME; from ruined cities and towns, to dungeons and general stores</p>
+				
+			
+			</aside>
+		</a>
 		
-		</aside>
 	</article>
 	
 	<article class="guide_article" id="guide_article_quests">
 		
-		<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
-		
-		<aside class="guide_aside">
+		<a class="guide_button" id="guide_button_quests" onclick="">
 			
-			<h2 class="guide_title">Quests</h2>
-			<p class="guide_description content_rewrite">Quests are the events that impact the world of GAMENAME. Gain hefty experience, meet new characters, develop your skills, earn new found treasure and much more.</p>
-			<a class="guide_button" id="guide_button_quests" onclick="">View</a>
-		
-		</aside>
+			<div class="guide_img_shell">
+				<div class="guide_img" id="guide_img_combat" alt="A thaumaturge and a warrior show off their skills" title="Fighters"></div>
+			</div>
+			
+			<aside class="guide_aside guide_aside_left">
+				
+				<h2 class="guide_title">Quests</h2>
+				<p class="guide_description content_rewrite">Quests are the events that impact the world of GAMENAME. Gain hefty experience, meet new characters, develop your skills, earn new found treasure and much more.</p>
+			
+			</aside>
+		</a>
 	</article>`;
 	
 	document.querySelector("#guide_button_skills").addEventListener('click', function(){ openSkillGuide()  }); document.querySelector("#guide_button_combat").addEventListener('click', function(){ openCombatGuide() });	
