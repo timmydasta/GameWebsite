@@ -2,11 +2,12 @@ let newsArticles = new Array();
 
 class NewsArticle {
 	
-	constructor(newsTitle, newsDate, newsLink, newsType){
+	constructor(newsTitle, newsDate, newsLink, newsType, newsDescription){
 		this.newsTitle = newsTitle;
 		this.newsDate = newsDate;
 		this.newsLink = newsLink;
 		this.newsType = newsType;
+		this.newsDescription = newsDescription;
 	}
 }
 
@@ -37,6 +38,8 @@ const start = function(){
 	
 	document.querySelector("#nav_button_news").addEventListener('click', function()  { openNews()   });	document.querySelector("#nav_button_guide").addEventListener('click', function() { openGuide()  });
 	document.querySelector("#nav_button_scores").addEventListener('click', function(){ openHS()     });	document.querySelector("#nav_button_forums").addEventListener('click', function(){ openForums() });
+	document.querySelector("#nav_button_media").addEventListener('click', function() { openMedia()  }); 
+	document.querySelector("#nav_button_media").addEventListener('click', function() { openMedia()  });
 	document.querySelector("#nav_button_media").addEventListener('click', function() { openMedia()  });
 }
 
@@ -51,11 +54,12 @@ const findAllNews = function(totalNews){
 			console.log(newsPost);
 			
 			let newsTitle = newsPost[1].Title;
-			let newsDate = newsPost[1].PostDate;
+			let newsDate = newsPost[1].Date;
 			let newsLink = newsPost[1].Link;
 			let newsType = newsPost[1].Type;
+			let newsDescription = newsPost[1].Description;
 			
-			newNews = new NewsArticle(newsTitle, newsDate, newsLink, newsType);
+			newNews = new NewsArticle(newsTitle, newsDate, newsLink, newsType, newsDescription);
 			newsArticles.push(newNews);
 			i++;
 		}
@@ -103,10 +107,13 @@ const findAllUsers = function(){
 
 const openNews = function(){
 		
-	document.getElementById("main").innerHTML = "";
-	let i = 0;
+	document.getElementById("main").innerHTML = 
+	`
+		<h1 class="page-title">News</h1>
+	`;
 	
-	while(i < newsArticles.length){
+	let i = 0;
+	while(i < 6){
 		
 		document.getElementById("main").innerHTML += 
 		`
@@ -130,8 +137,52 @@ const openNews = function(){
 				
 					</header>
 					
-					<p class="news_brief" id="news_brief${i}">News description</p>
+					<p class="news_brief" id="news_brief${i}">${newsArticles[i].newsDescription}</p>
 					
+				</div>
+				
+			</article>
+			
+		</a>
+		`;
+		
+		i++;
+	}
+	
+	document.getElementById("main").innerHTML += 
+	`
+		<a news_allbutton onclick="openNewsArchive()"><h2 class="news_allText">News Archive</h1></a>
+	`;
+}
+
+const openNewsArchive = function(){
+	document.getElementById("main").innerHTML = 
+	`
+		<h1 class="page-title">News Archive</h1>
+	`;
+	
+	let i = 0;
+	while(i < newsArticles.length){
+		
+		document.getElementById("main").innerHTML += 
+		`
+		<a class="newsarchive_button" id="news_button${i}" onclick="loadNewsPage('news/${newsArticles[i].newsLink}.html')">
+			
+			<article class="newsarchive_article" id="newsarchive_article${i}">
+			
+				<div class="newsarchive_img">
+					<img class="newsarchive_img" id="newsarchive_img${i}" src="img/PNG/news-${newsArticles[i].newsType}.png">
+				</div>
+					
+				<div class="newsarchive_main">
+				
+					<h2 class="newsarchive_title" id="newsarchive_title${i}">${newsArticles[i].newsTitle}</h2>
+							
+					<div class="newsarchive_typedate">
+						<p class="newsarchive_type" id="newsarchive_type${i}">${newsArticles[i].newsType}</p>
+						<p class="newsarchive_date" id="newsarchive_date${i}">${newsArticles[i].newsDate}</p>
+					</div>
+									
 				</div>
 				
 			</article>
@@ -167,7 +218,10 @@ const loadNewsPage = function(theLink){
 const openGuide = function(){
 
 	document.getElementById("main").innerHTML =
-	`<article class="guide_article" id="guide_article_skills">
+	`
+	<h1 class="page-title">Game Guide</h1>
+
+	<article class="guide_article" id="guide_article_skills">
 		
 		<a class="guide_button" id="guide_button_skills">
 			
@@ -439,44 +493,21 @@ const openHS = function(){
 	document.getElementById("main").innerHTML = 
 	`<div class="HighScores">
 			
-		<div class="hs-title">
-			<h2 class="hs-title">HighScores</h3>
-		</div>
+		<h1 class="page-title">HighScores</h1>
 			
 		<div class="HS-Main">
+		
 			<aside class="HS_SkillButtons">
-			<ul class="HS_SkillButtons">
-				<Button onclick="openHSPage('Total Level')" 	class="HS_SkillButton"><img class="HS_SkillIMG" src="" />									</Button>
-				<Button onclick="openHSPage('Total EXP')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="" />									</Button>
-				<Button onclick="openHSPage('Archery')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/ArcheryIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Athleticism')"  	class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/AthleticismIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Bounty Hunting')" 	class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/BountyHuntingIcon.png"/></Button>
-				<Button onclick="openHSPage('Camaraderie')" 	class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/CamaraderieIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Carpentry')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/CarpentryIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Chemistry')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/ChemistryIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Cookery')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/CookeryIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Crafting')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/CraftingIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Dowsing')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/DowsingIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Endurance')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/EnduranceIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Firelighting')" 	class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/FirelightingIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Fishing')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/FishingIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Fletching')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/FletchingIcon.png"/>	</Button>
-				<Button	onclick="openHSPage('Forestry')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/ForestryIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Health')" 			class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/HealthIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Horticulture')" 	class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/HorticultureIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Hunting')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/HuntingIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Imbuing')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/ImbuingIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Larceny')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/LarcenyIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Maleficium')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/MaleficiumIcon.png"/>	</Button>
-				<Button onclick="openHSPage('Melee')" 			class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/MeleeIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Mining')" 			class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/MiningIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Smithing')" 		class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/SmithingIcon.png"/>		</Button>
-				<Button onclick="openHSPage('Thaumaturgy')" 	class="HS_SkillButton"><img class="HS_SkillIMG" src="img/SkillIcons/ThaumaturgyIcon.png"/>	</Button>
-			<ul>
+					<a class="HS_SkillButton" onclick="openHSPage('Total Level')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Total Level</h3></a>
+					<a class="HS_SkillButton" onclick="openHSPage('Total EXP')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Total EXP</h3></a>
+					<a class="HS_SkillButton" onclick="collapseHSList('Skills')" 	><img class="HS_SkillIMG" src=""/>										<h3 class="name">Skills</h3> <img class="HS_SkillIMG" src=""/>	</a>
+					<div class="HS_dropdown" id="HS_Dropdown_Skills"></div>
+					<a class="HS_SkillButton" onclick="openHSPage('Quests')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Quests</h3></a>
 			</aside>
+			
 			<div class="HS_Main">
 				
-				<h3 class="HS_SkillTitle" id="HS_SkillTitle"></h3>
+				<h2 class="HS_SkillTitle" id="HS_SkillTitle"></h2>
 				<div id="HS_Players" class="HS_Players">	
 				</div>
 			</div>
@@ -488,7 +519,7 @@ const openHS = function(){
 						<h3 class="HS_SearchTitle">Search For A Player</h3>
 						<Input class="HS_SearchInput" id="HS_SearchInput"></Input>
 						<div class="HS_SearchCenter">
-							<Button class="HS_SearchButton">Search</Button>
+							<a class="HS_Button" onclick="searchPlayer()">Search</a>
 						</div>
 					</div>
 				</div>
@@ -499,7 +530,7 @@ const openHS = function(){
 						<Input class="HS_CompareInput" id="HS_CompareInputOne"></Input>
 						<Input class="HS_CompareInput" id="HS_CompareInputTwo"></Input>
 						<div class="HS_CompareCenter">
-							<Button class="HS_CompareButton">Compare</Button>
+							<a class="HS_Button" onclick="comparePlayers()">Compare</a>
 						</div>
 					</div>
 				</div>
@@ -510,18 +541,58 @@ const openHS = function(){
 	openHSPage("Total Level");
 }
 
+const collapseHSList = function(theList){
+	if(document.querySelector("#HS_Dropdown_Skills").innerHTML == ""){
+	document.querySelector("#HS_Dropdown_Skills").innerHTML = `
+		<a class="HS_SkillButton" onclick="openHSPage('Archery')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ArcheryIcon.png"/>		<h3 class="name">Archery</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Athleticism')"  	><img class="HS_SkillIMG" src="img/SkillIcons/AthleticismIcon.png"/>	<h3 class="name">Athleticism</h3>		</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Bounty Hunting')"><img class="HS_SkillIMG" src="img/SkillIcons/BountyHuntingIcon.png"/	><h3 class="name">Bounty Hunting</h3>	</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Camaraderie')" 	><img class="HS_SkillIMG" src="img/SkillIcons/CamaraderieIcon.png"/>	<h3 class="name">Camaraderie</h3>		</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Carpentry')" 	><img class="HS_SkillIMG" src="img/SkillIcons/CarpentryIcon.png"/>		<h3 class="name">Carpentry</h3>			</a>
+		<a class="HS_SkillButton"onclick="openHSPage('Chemistry')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ChemistryIcon.png"/>		<h3 class="name">Chemistry</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Cookery')" 		><img class="HS_SkillIMG" src="img/SkillIcons/CookeryIcon.png"/>		<h3 class="name">Cookery</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Crafting')" 		"><img class="HS_SkillIMG" src="img/SkillIcons/CraftingIcon.png"/>		<h3 class="name">Crafting</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Dowsing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/DowsingIcon.png"/>		<h3 class="name">Dowsing</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Endurance')" 	><img class="HS_SkillIMG" src="img/SkillIcons/EnduranceIcon.png"/>		<h3 class="name">Endurance</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Firelighting')" 	><img class="HS_SkillIMG" src="img/SkillIcons/FirelightingIcon.png"/>	<h3 class="name">Firelighting</h3>		</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Fishing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/FishingIcon.png"/>		<h3 class="name">Fishing</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Fletching')" 	><img class="HS_SkillIMG" src="img/SkillIcons/FletchingIcon.png"/>		<h3 class="name">Fletching</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Forestry')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ForestryIcon.png"/>		<h3 class="name">Forestry</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Health')" 		><img class="HS_SkillIMG" src="img/SkillIcons/HealthIcon.png"/>			<h3 class="name">Health</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Horticulture')" 	><img class="HS_SkillIMG" src="img/SkillIcons/HorticultureIcon.png"/>	<h3 class="name">Horticulture</h3>		</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Hunting')" 		><img class="HS_SkillIMG" src="img/SkillIcons/HuntingIcon.png"/>		<h3 class="name">Hunting</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Imbuing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ImbuingIcon.png"/>		<h3 class="name">Imbuing</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Larceny')" 		><img class="HS_SkillIMG" src="img/SkillIcons/LarcenyIcon.png"/>		<h3 class="name">Larceny</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Maleficium')" 	><img class="HS_SkillIMG" src="img/SkillIcons/MaleficiumIcon.png"/>		<h3 class="name">Maleficium</h3>		</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Melee')" 		><img class="HS_SkillIMG" src="img/SkillIcons/MeleeIcon.png"/>			<h3 class="name">Melee</h3>				</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Mining')" 		><img class="HS_SkillIMG" src="img/SkillIcons/MiningIcon.png"/>			<h3 class="name">Mining</h3> 			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Smithing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/SmithingIcon.png"/>		<h3 class="name">Smithing</h3>			</a>
+		<a class="HS_SkillButton" onclick="openHSPage('Thaumaturgy')" 	><img class="HS_SkillIMG" src="img/SkillIcons/ThaumaturgyIcon.png"/>	<h3 class="name">Thaumaturgy</h3>		</a>
+	`;
+	}
+	else{
+		document.querySelector("#HS_Dropdown_Skills").innerHTML = ``;
+	}
+
+}
+
 const openForums = function(){
 	
 	document.getElementById("main").innerHTML = 
-	`<article>
-		<h2>Forums</h2>
-	<article>`;
+	`
+	<h1>Forums</h1>
+	`;
 }
 
 const openMedia = function(){
 		
 	document.getElementById("main").innerHTML = 
-	`<article>
+	`
+	<div class="page-title">
+		<h1 class="page-title">Media</h1>
+	</div>
+
+	<article>
 		<h2>Screenshots</h2>
 	<article>
 	
@@ -530,7 +601,25 @@ const openMedia = function(){
 	<article>`;
 }
 
+const openSignIn = function(){
+	
+	document.getElementById("main").innerHTML = 
+	`
+	<div class="page-title">
+		<h1 class="page-title">Sign In</h1>
+	</div>
+	`;
+}
 
+const openSignUp = function(){
+	
+	document.getElementById("main").innerHTML = 
+	`
+	<div class="page-title">
+		<h1 class="page-title">Sign Up</h1>
+	</div>
+	`;
+}
 
 start();
 

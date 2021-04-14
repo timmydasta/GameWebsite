@@ -27,23 +27,31 @@
 				<ul class="navbar">
 				
 					<div class="nav_button nav_button_news">
-						<a class="nav_button nav_button_news" id="nav_button_news">News</a>	
+						<a class="nav_button nav_button_news" id="nav_button_news" onclick="openNews()">News</a>	
 					</div>
 					
 					<div class="nav_button nav_button_guide">				
-						<a class="nav_button nav_button_guide" id="nav_button_guide">Game Guide</a>
+						<a class="nav_button nav_button_guide" id="nav_button_guide" onclick="openGuide()">Game Guide</a>
 					</div>
 					
 					<div class="nav_button nav_button_scores">				
-						<a class="nav_button nav_button_scores" id="nav_button_scores">HighScores</a>
+						<a class="nav_button nav_button_scores" id="nav_button_scores" onclick="openHS()">HighScores</a>
 					</div>
 					
 					<div class="nav_button nav_button_forums">				
-						<a class="nav_button nav_button_forums" id="nav_button_forums">Forums</a>
+						<a class="nav_button nav_button_forums" id="nav_button_forums" onclick="openForums()">Forums</a>
 					</div>
 					
 					<div class="nav_button nav_button_media">				
-						<a class="nav_button nav_button_media" id="nav_button_media">Media</a>
+						<a class="nav_button nav_button_media" id="nav_button_media" onclick="openMedia()">Media</a>
+					</div>
+					
+					<div class="nav_button nav_button_signin">				
+						<a class="nav_button nav_button_signin" id="nav_button_signin" onclick="openSignIn()">Sign In</a>
+					</div>
+					
+					<div class="nav_button nav_button_signup">				
+						<a class="nav_button nav_button_signup" id="nav_button_signup" onclick="openSignUp()">Sign Up</a>
 					</div>
 				
 				</ul>
@@ -58,6 +66,10 @@
 		</main>
 		
 		<footer>
+			<p class="footer_text">
+			This website and its contents are copyright © 2019 - 2021 Tim Fowler.<br>
+			Use of this website is subject to our <a class="footer_text">Terms & Conditions</a> and <a class="footer_text">Privacy Policy</a>.
+			</p>
 		</footer>
 		
 	</body>

@@ -9,7 +9,7 @@ const openSkillGuide = function(){
 	
 	<article class="skillguide">
 		<header class="skillguide_header">
-			<h2 class="skillguide_header_title">Skill Guide</h2>
+			<h1 class="skillguide_header_title">Skill Guide</h1>
 		</header>
 		
 			<p class="skillguide_header_text content_rewrite">

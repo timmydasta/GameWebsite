@@ -1,5 +1,6 @@
 .content_rewrite{
 	color: #ff0000;
+	color: black;
 }
 
 
@@ -27,10 +28,21 @@ h1, h2, h3, h4, a {
 	font-family: 'Acme', sans-serif;
 }
 
+h1{
+	font-size: 36px;
+}
+
+h2{
+	font-size: 28px;
+}
+
+h3{
+	font-size: 20px;
+}
+
 p {
-	margin: 0.5em 0.3em 0.5em 0.3em;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 30px;
+	font-size: 16px;
 	
 }
 
@@ -144,7 +156,7 @@ a.guide_button:hover .guide_img{
 	
 aside.guide_aside{
 	position: absolute;
-	width: 50%;
+	width: 40%;
 	height: 100%;
 	top: 0;
 	right: 0;
@@ -159,7 +171,11 @@ aside.guide_aside_left{
 h2.guide_title{
 	height: 30px;
 	margin: 0 0 10px auto;
-	font-size: 24px;
+	color: #ffffff;
+}
+
+a.guide_button:hover h2.guide_title{
+	color: #ffde00;
 }
 
 p.guide_description{
@@ -167,23 +183,6 @@ p.guide_description{
 	margin: 0 0 10px auto;
 	height: 136px;
 }
-
-/* old
-a.guide_button{
-	height: 40px;
-	padding: 5px 0;
-	font-size: 20px;
-	display: block;
-	text-align: center;
-	border: 2px solid black;
-	background-color: #72757d;
-}
-
-a.guide_button:hover{
-	color: #005BBB;
-	background-color: #979aa5;
-}
-*/
 
 div.guide_breadcrumbs{
 	display: flex;
@@ -213,11 +212,10 @@ header.skillguide_header{
 	border-bottom: 2px solid black;
 }
 
-h2.skillguide_header_title{
+h1.skillguide_header_title{
 	margin: 0;
 	color: #FFFFFF;
 	padding: 0.5em;
-	font-size: 24px
 }
 
 p.skillguide_header_text{
@@ -346,7 +344,6 @@ h3.specificskill_grid_title{
 	margin:  auto 10px;
 	width: 100%;
 	color: #FFFFFF;
-	font-size: 20px;
 	height: 22px;
 	vertical-align: middle;
 }
@@ -408,11 +405,10 @@ header.combatguide_header{
 	border-bottom: 2px solid black;
 }
 
-h2.combatguide_header_title{
+h1.combatguide_header_title{
 	margin: 0;
 	color: #FFFFFF;
 	padding: 0.5em;
-	font-size: 24px
 }
 
 p.combatguide_header_text{
@@ -445,11 +441,10 @@ header.worldguide_header{
 	border-bottom: 2px solid black;
 }
 
-h2.worldguide_header_title{
+h1.worldguide_header_title{
 	margin: 0;
 	color: #FFFFFF;
 	padding: 0.5em;
-	font-size: 24px
 }
 
 p.worldguide_header_text{
@@ -482,11 +477,10 @@ header.questguide_header{
 	border-bottom: 2px solid black;
 }
 
-h2.questguide_header_title{
+h1.questguide_header_title{
 	margin: 0;
 	color: #FFFFFF;
 	padding: 0.5em;
-	font-size: 24px
 }
 
 p.questguide_header_text{
@@ -507,93 +501,6 @@ p.questguide_article_description{
 	font-size: 18px;
 }
 
-
-article.build{
-	background-color: #72757d;
-	margin: 1em 0 0 0;
-	padding: 0 0 1em 0;
-	border: 2px solid black;
-}
-
-header.buildHeader{
-	height: 3em;
-	width: 100%;
-	margin: 0 auto;
-	padding: 0.5em 0 0 0;
-	background-color: #4d4f55;
-}
-
-h2.buildNumber, h2.buildDate{
-	margin: 0 3% 0 3%;
-	font-size: 18px;
-	width: 100%;
-	color: #FFFFFF;
-}
-
-h2.buildDate{
-	text-align: left;
-}
-
-@media only screen and (min-width: 700px){
-	
-
-	header.buildHeader{
-		display: flex;
-		height: 2em;
-	}
-	
-	h2.buildNumber, h2.buildDate{
-		margin: 0 1em 0 1em;
-		width: 50%;
-		font-size: 22px;
-	}
-	
-	h2.buildDate{
-		text-align: right;
-	}
-}
-
-div.buildUpdates{
-	width: 95%;
-	padding: 0.5em 0 0 0;
-	margin: 0.5em auto 0 auto;
-	background-color: #979aa5;
-	border: 1px solid black;
-}
-
-div.buildBugFixes{
-	width: 95%;
-	padding: 0.5em 0 0 0;
-	margin: 0.5em auto 0 auto;
-	background-color: #979aa5;
-	border: 1px solid black;
-}
-
-h3.buildUpdatesTitle, h3.buildUpdatesTitle{
-	margin: 0 0 0.2em 0.5em;
-}
-
-div.buildUpdate, div.buildBugFix{
-	display: flex;
-	background-color: #FFFFFF;
-	margin: 0 0 0.2em 0;
-	padding: 0.2em 0 0.2em 0;
-}
-
-ul.updatesScroll, ul.bugfixesScroll{
-	background-color: #FFFFFF;
-	padding: 1em;
-	margin: 0;
-}
-
-li.buildUpdateText, li.buildBugFixText{
-	margin: 0 0.5em 0 0.5em;
-	padding: 0;
-	font-size: 14px;
-	
-}
-
-
 /**FOOTER**************************************************************/
 footer{
 	position: fixed;
@@ -608,6 +515,16 @@ footer{
 	background-color: #929292;
 	margin: 0 0 0 0%;
 	justify-content: flex-end;
+}
+
+p.footer_text{
+	font-size: 12px;
+	margin: auto 1em;
+}
+
+a.footer_text{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
 }
 
 button.footer_button{
@@ -631,192 +548,67 @@ Button.adminNavbarButton{
 	border: none;
 }
 
-/**NEW BUILDS******************************************************/
-
-div.newBuild{
-	background-color: #929292;
-	margin: 0 2em 1em 2em;
-}
-
-div.newBuildGeneral{
-	display: flex;
-	margin: 0 2em 0 2em;
-	padding: 1em 0 0 0;
-}
-
-h2.newBuildTitle{
-	margin: 0 1em 0 0;
-	width: 100%;	
-}
-
-Button.newBuildCancel{
-	width: 10em;
-	border: none;
-}
-
-div.newBuildInfo{
-	display: flex;
-	height: 1.5em;
-	margin: 1em 2em 1em 2em;
-}
-
-div.newBuildNumber, div.newBuildDate{
-	display: flex;
-	width: 50%;
-}
-
-h3.newBuildNumberTitle, h3.newBuildDateTitle{
-	margin: 0 0.5em 0 0;
-}
-
-#newBuildNumberInput{
-	margin: 0 1em 0 0;
-	width: 100%;
-}
-
-#newBuildDateInput{
-	margin: 0 0 0 1em;
-	width: 100%;
-}
-
-div.newBuildAddUpdate, div.newBuildAddBugFix{
-	display: flex;
-	margin: 0 2em 1em 2em;
-}
-
-h3.newBuildAddUpdateTitle, h3.newBuildAddBugFixTitle{
-	margin: 0 2em 0.2em 2em;
-	width: 100%;
-}
-
-#newBuildAddUpdateInput, #newBuildAddBugFixInput{
-	margin: 0 1em 0 0;
-	width: 100%;
-}
-
-Button.newBuildAddUpdateButton, Button.newBuildAddBugFixButton{
-	width: 10em;
-	border: none;
-}
-
-#newBuildUpdates, #newBuildBugFixes{
-	margin: 0 1.5em 0.5em 1.5em;
-}
-
-div.newBuildUpdates, div.newBuildBugFixes{
-	display: flex;
-	margin: 0 2em 0 2em;
-}
-
-div.newBuildUpdate, div.newBuildBugFix{
-	display: flex;
-	margin: 0 0 0.2em 0;
-	background-color: #FFFFFF;
-}
-
-h3.newBuildUpdateText, h3.newBuildBugFixText{
-	width: 100%;
-	margin: 0 3em 0 0.5em;
-}
-
-Button.newBuildUpdateButton, Button.newBuildBugFixButton{
-	width: 3em;
-	height: 3em;
-	border: none;
-}
-
-div.newBuildCreate{
-	display: flex;
-	justify-content: center;
-	padding: 0 0 1em 0;
-}
-
-Button.newBuildCreateButton{
-	width: 10em;
-	height: 3em;
-	border: none;
-}
-
-/**GETTING STARTED*************************************************/
-
-div.GS_SkillButtons{
-	margin: 0 1em 0 0;
-	background-color: #929292;
-	padding: 0.5em;
-}
-
-Button.GS_SkillButton{
-	width: 60px;
-	height: 60px;
-	margin: 0 0 0 0;
-	border: none;
-}
-
-img.GS_SkillIMG {
-	width: 100%;
-	height: 100%;
-}
-
 /**HIGHSCORES******************************************************/
 
 div.HighScores{
-	background-color: #72757d;
 	margin: 0 auto;
-	border: 2px solid black;
 }
 
 div.hs-title{
-	height: 2em;
+	height: 3em;
 	width: 100%;
 	margin: 0 auto;
-	padding: 0.5em 0 0 0;
-	background-color: #4d4f55;
 }
 h2.hs-title{
-	margin: 0 1em 0 1em;
-	width: 50%;
+	margin: 0;
+	width: 100%;
 	color: #FFFFFF;
+	border-bottom: 1px solid black;
 }
 
-@media only screen and (min-width: 1000px){
-	div.HS-Main{
-		display: flex;
-	}
+div.HS-Main{
+	display: flex;
 }
 
 aside.HS_SkillButtons{
-	display: flex;
+	position: relative;
 	width: 100%;
 	height: 100%;
-	min-width: 70px;
-	background-color: #929292;
-	border-right: 1px solid black;
-	justify-content: center;
 }
 
-ul.HS_SkillButtons{
-	width: 90%;
-	padding: 0;
-	margin: 0 auto;
+a.HS_SkillButton{
+	display: flex;
+	margin: 0;
+	overflow: hidden;
+	border-bottom: 1px solid black;
+	background-color: #929292;
 	position: relative;
 }
 
-Button.HS_SkillButton{
-	width: 60px;
-	height: 60px;
-	margin: auto;
-	padding: auto;
-	border: none;
+#HS_Dropdown_Skills{
+	width: 95%;
+	margin: 0 0 0 auto;
+
 }
 
 img.HS_SkillIMG {
-	width: 100%;
-	height: 100%;
+	margin: 0.2em;
+	width: 40px;
+	height: 40px;
+}
+
+h3.name{
+	margin: auto 0.2em;
+}
+
+a.HS_SkillButton:hover{
+	background-color: #FFFFFF;
+	transform: scale(1.1);
 }
 
 div.HS_Main {
 	width: 100%;
-
+	margin: 0 1em;
 }
 
 div.HS_Titles{
@@ -827,14 +619,13 @@ div.HS_Titles{
 }
 
 div.HS_Players{
-	margin: 0 1em 0 1em;
 	background-color: #929292;
 	padding: 0;
 	border: 1px solid black;
 }
 
-h3.HS_SkillTitle{
-	margin: 0 0 0 0;
+h2.HS_SkillTitle{
+	margin: 0 0 0.5em 0;
 }
 
 div.HS_Player{
@@ -847,6 +638,7 @@ div.HS_Player{
 
 h3.HS_PlayerRankTitle, h3.HS_PlayerNameTitle, h3.HS_PlayerLevelTitle, h3.HS_PlayerExpTitle{
 	margin: 0 0 0 0.5em;
+	padding: 0.2em 0;
 	border-right: 1px solid black;
 }
 
