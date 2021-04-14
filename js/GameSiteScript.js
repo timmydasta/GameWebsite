@@ -1,3 +1,5 @@
+let activeUser = "";
+
 let newsArticles = new Array();
 
 class NewsArticle {
@@ -35,18 +37,11 @@ class Skill{
 const start = function(){
 	findAllNews();
 	findAllUsers();
-	
-	document.querySelector("#nav_button_news").addEventListener('click', function()  { openNews()   });	document.querySelector("#nav_button_guide").addEventListener('click', function() { openGuide()  });
-	document.querySelector("#nav_button_scores").addEventListener('click', function(){ openHS()     });	document.querySelector("#nav_button_forums").addEventListener('click', function(){ openForums() });
-	document.querySelector("#nav_button_media").addEventListener('click', function() { openMedia()  }); 
-	document.querySelector("#nav_button_media").addEventListener('click', function() { openMedia()  });
-	document.querySelector("#nav_button_media").addEventListener('click', function() { openMedia()  });
 }
 
 const findAllNews = function(totalNews){
 	$.getJSON('https://more-pig.firebaseio.com/WebsiteDB.json', function(result){
-		console.log("keys " + Object.keys(result).length);
-		
+				
 		let i = 0;
 		while( i < Object.keys(result).length){
 						
@@ -494,8 +489,10 @@ const openHS = function(){
 	`<div class="HighScores">
 			
 		<h1 class="page-title">HighScores</h1>
-			
+		
+		<h2 class="HS_SkillTitle" id="HS_SkillTitle"></h2>		
 		<div class="HS-Main">
+		
 		
 			<aside class="HS_SkillButtons">
 					<a class="HS_SkillButton" onclick="openHSPage('Total Level')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Total Level</h3></a>
@@ -505,12 +502,7 @@ const openHS = function(){
 					<a class="HS_SkillButton" onclick="openHSPage('Quests')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Quests</h3></a>
 			</aside>
 			
-			<div class="HS_Main">
-				
-				<h2 class="HS_SkillTitle" id="HS_SkillTitle"></h2>
-				<div id="HS_Players" class="HS_Players">	
-				</div>
-			</div>
+			<div id="HS_Players" class="HS_Players"></div>
 			
 			<aside class="HS_SearchAndCompare">
 				
@@ -601,29 +593,187 @@ const openMedia = function(){
 	<article>`;
 }
 
-const openSignIn = function(){
+const openAccount = function(){
 	
-	document.getElementById("main").innerHTML = 
-	`
-	<div class="page-title">
-		<h1 class="page-title">Sign In</h1>
-	</div>
-	`;
+	if(activeUser == ""){
+		document.getElementById("main").innerHTML = 
+		`
+		<div class="page-title">
+			<h1 class="page-title">Account</h1>
+		</div>
+		
+		<div class="account-forms">
+		
+			<form class="form-account" method="post">
+			
+				<span class="form-row">
+					<label class="form-label">Username:</label>
+					<input class="form-input" id="signin-input-username" maxlength="200" type="text"></input>
+					<p class="form-warning" id="signin-warning-username"></p>
+				</span>
+				
+				<span class="form-row">
+					<label class="form-label" >Password:</label>
+					<input class="form-input" id="signin-input-password" maxlength="200" type="password" maxlength="10"></input>
+					<p class="form-warning" id="signin-warning-password"></p>
+				</span>
+				
+				<button type="button" onclick="signIn()">Sign In</button>
+				
+			</form>
+		
+			<form class="form-account" method="post">
+			
+				<span class="form-row">
+					<label class="form-label">Username:</label>
+					<input class="form-input" id="signup-input-username" maxlength="10"></input>
+					<p class="form-warning" id="signup-warning-username"></p>
+				</span>
+				
+				<span class="form-row">
+					<label class="form-label">Email:</label>
+					<input class="form-input" id="signup-input-email" maxlength="200" type="email"></input>
+					<p class="form-warning" id="signup-warning-email"></p>
+				</span>
+				
+				<span class="form-row">
+					<label class="form-label">Password:</label>
+					<input class="form-input" id="signup-input-password" maxlength="200" type="password"></input>
+					<p class="form-warning" id="signup-warning-password"></p>
+				</span>
+				
+				<button type="button" onclick="signUp()">Sign Up</button>
+				
+			</form>
+			
+		</div>
+		`;
+	}
+	else{
+		document.getElementById("main").innerHTML = 
+		`
+		<div class="page-title">
+			<h1 class="page-title">Account</h1>
+		</div>
+		
+		<a onclick="logOut()">Log Out</a>
+		`;
+	}
 }
 
-const openSignUp = function(){
+const signIn = function(){
+	document.querySelector("#signin-warning-username").innerHTML = "";	document.querySelector("#signin-warning-password").innerHTML = "";
 	
-	document.getElementById("main").innerHTML = 
-	`
-	<div class="page-title">
-		<h1 class="page-title">Sign Up</h1>
-	</div>
-	`;
+	let theUsername = ""; let thePassword = "";
+		
+	console.log(document.querySelector("#signin-input-username").value.length);
+	if(document.querySelector("#signin-input-username").value == ""){
+		document.querySelector("#signin-warning-username").innerHTML = "This field is required.";
+	}
+	else{
+		theUsername = document.querySelector("#signin-input-username").value;
+	}
+	
+	if(document.querySelector("#signin-input-password").value == ""){
+		document.querySelector("#signin-warning-password").innerHTML = "This field is required.";
+	}
+	else {
+		thePassword = document.querySelector("#signin-input-password").value;
+	}
+	
+	if(theUsername != "" && thePassword != ""){
+		$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}.json`, function(result){
+
+			if(result == null){
+				document.querySelector("#signin-warning-username").innerHTML = "That user doesn't exist";
+			}
+			else{
+				
+				$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}/Password.json`, function(result){
+					
+					if(result != thePassword){
+						document.querySelector("#signin-warning-password").innerHTML = "You have entered an incorrect password";
+					}
+					else{
+		
+						$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}/Username.json`, function(result){
+							activeUser = result;
+							document.querySelector("#nav_button_account").innerHTML = activeUser;
+							openAccount();
+						});
+					}
+				});
+			}
+		});
+	}
+}
+
+const signUp = function(){
+	document.querySelector("#signup-warning-username").innerHTML = document.querySelector("#signup-warning-email").innerHTML = document.querySelector("#signup-warning-password").innerHTML = "";
+	
+	let theUsername = "";	let theEmail = "";	let thePassword = "";
+	
+	if(document.querySelector("#signup-input-username").value == ""){
+		document.querySelector("#signup-warning-username").innerHTML = "This field is required.";
+	}
+	else if(document.querySelector("#signup-input-username").value.length < 5){
+		document.querySelector("#signup-warning-username").innerHTML = "Please enter a valid username between 5 & 18 characters long.";
+	}
+	else{
+		theUsername = document.querySelector("#signup-input-username").value;
+	}
+	
+	if(document.querySelector("#signup-input-email").value == ""){
+		document.querySelector("#signup-warning-email").innerHTML = "This field is required.";
+	}
+	else{
+		theEmail = document.querySelector("#signup-input-email").value;
+	}
+	
+	if(document.querySelector("#signup-input-password").value == ""){
+		document.querySelector("#signup-warning-password").innerHTML = "This field is required.";
+	}
+	else if(document.querySelector("#signup-input-password").value.length < 6){
+		document.querySelector("#signup-warning-password").innerHTML = "Please enter a valid username between 6 & 20r characters long.";
+	}
+	else{
+		thePassword = document.querySelector("#signup-input-password").value;
+	}
+	
+	if(theUsername != "" && theEmail != "" && theEmail != ""){
+			
+		$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}.json`, function(result){
+					
+			if(result != null){
+				document.querySelector("#signup-warning-username").innerHTML = "That username is already in use";
+			}
+			else {
+				
+				$.getJSON(`https://more-pig.firebaseio.com/RecoveryEmailAddresses/${theEmail.toUpperCase()}.json`, function(result){
+
+					if(result != null){
+						document.querySelector("#signup-warning-email").innerHTML = "That email is already in use";
+					}
+					else{
+						activeUser = theUsername[0].toUpperCase() + theUsername.slice(1);
+						document.querySelector("#nav_button_account").innerHTML = activeUser;
+						openAccount();
+					}
+				});
+			}
+		});
+	}
+}
+
+const logOut = function(){
+	activeUser= "";
+	document.querySelector("#nav_button_account").innerHTML = `Account`;
+	openAccount();
 }
 
 start();
 
-function openHSPage(thePage){
+const openHSPage = function(thePage){
 	
 	document.getElementById("HS_Players").innerHTML = 
 	`<div class="HS_Titles">

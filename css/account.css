@@ -1,0 +1,30 @@
+div.account-forms{
+	display: flex;
+
+}
+
+form.form-account{
+	background-color: #929292;
+	padding: 1em;
+	width: 100%;
+}
+
+form.form-account:last-of-type{
+	margin-left: 1em;
+}
+
+span.form-row{
+}
+
+label.form-label{
+	margin: 0;
+}
+
+input.form-input{
+	
+}
+
+button.form-button{
+	margin: 1em;
+}
+		

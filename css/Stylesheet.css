@@ -566,6 +566,11 @@ h2.hs-title{
 	border-bottom: 1px solid black;
 }
 
+h2.HS_SkillTitle{
+	margin: 0 0 0.5em 0;
+	text-align: center
+}
+
 div.HS-Main{
 	display: flex;
 }
@@ -606,11 +611,6 @@ a.HS_SkillButton:hover{
 	transform: scale(1.1);
 }
 
-div.HS_Main {
-	width: 100%;
-	margin: 0 1em;
-}
-
 div.HS_Titles{
 	display: flex;
 	margin: 0;
@@ -619,13 +619,11 @@ div.HS_Titles{
 }
 
 div.HS_Players{
+	height: 100%;
 	background-color: #929292;
+	margin: 0 1em;
 	padding: 0;
 	border: 1px solid black;
-}
-
-h2.HS_SkillTitle{
-	margin: 0 0 0.5em 0;
 }
 
 div.HS_Player{
