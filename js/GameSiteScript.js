@@ -533,6 +533,79 @@ const openHS = function(){
 	openHSPage("Total Level");
 }
 
+const openHSPage = function(thePage){
+	
+	document.getElementById("HS_Players").innerHTML = 
+	`<div class="HS_Titles">
+		<h3 class="HS_PlayerRankTitle">Rank</h3>
+		<h3 class="HS_PlayerNameTitle">Player</h3>
+		<h3 class="HS_PlayerLevelTitle">Level</h3>
+		<h3 class="HS_PlayerExpTitle">Exp</h3>
+	</div>
+	`;
+	document.getElementById("HS_SkillTitle").innerHTML = thePage;
+		
+	let playersOnScreen = 0;
+	console.log(users.length);
+	while(playersOnScreen < users.length){
+		
+		document.getElementById("HS_Players").innerHTML +=
+		`<div class="HS_Player">
+			<h3 id="HS_Player` + playersOnScreen + `Rank" class="HS_PlayerRank"></h3>
+			<h3 id="HS_Player` + playersOnScreen + `Name" class="HS_PlayerName"></h3>
+			<h3 id="HS_Player` + playersOnScreen + `Level" class="HS_PlayerLevel"></h3>
+			<h3 id="HS_Player` + playersOnScreen + `EXP" class="HS_PlayerEXP"></h3>
+		</div>`;
+				
+		if(thePage == "Total Level" || thePage == "Total EXP"){
+			
+			let sortedUsers;
+			
+			if(thePage == "Total Level"){
+				
+				sortedUsers = users.sort(function(a, b){
+				
+					if(b.totalLevel - a.totalLevel == 0){ return b.totalEXP - a.totalEXP;     }
+					else{ 								  return b.totalLevel - a.totalLevel; }
+				});
+			}
+			else if(thePage == "Total EXP"){
+				
+				sortedUsers = users.sort(function(a, b){
+				
+					if(b.totalEXP - a.totalEXP == 0){ return b.totalLevel - a.totalLevel; }
+					else{ 	  						  return b.totalEXP - a.totalEXP;     }
+				});
+			}
+			
+			document.getElementById("HS_Player" + playersOnScreen + "Rank").innerHTML =  (playersOnScreen + 1);
+			document.getElementById("HS_Player" + playersOnScreen + "Name").innerHTML =	 sortedUsers[playersOnScreen].username;
+			document.getElementById("HS_Player" + playersOnScreen + "Level").innerHTML = sortedUsers[playersOnScreen].totalLevel.toLocaleString();
+			document.getElementById("HS_Player" + playersOnScreen + "EXP").innerHTML =	 sortedUsers[playersOnScreen].totalEXP.toLocaleString();
+			
+		}
+		else {
+			
+			for(var i = 0; i < users[playersOnScreen].skills.length; i++){
+				if(users[playersOnScreen].skills[i].skillName == thePage){ break; }
+			}
+			
+			let sortedUsers = users.sort(function(a, b){
+				
+				if(b.skills[i].level - a.skills[i].level == 0){	return b.skills[i].exp - a.skills[i].exp;     }
+				else{ 											return b.skills[i].level - a.skills[i].level; }
+			});
+			
+			document.getElementById("HS_Player" + playersOnScreen + "Rank").innerHTML = (playersOnScreen + 1);
+			document.getElementById("HS_Player" + playersOnScreen + "Name").innerHTML =	 sortedUsers[playersOnScreen].username;
+			document.getElementById("HS_Player" + playersOnScreen + "Level").innerHTML = sortedUsers[playersOnScreen].skills[i].level.toLocaleString();
+			document.getElementById("HS_Player" + playersOnScreen + "EXP").innerHTML =	 sortedUsers[playersOnScreen].skills[i].exp.toLocaleString();
+
+		}
+		playersOnScreen++;			
+	}
+}
+	
 const collapseHSList = function(theList){
 	if(document.querySelector("#HS_Dropdown_Skills").innerHTML == ""){
 	document.querySelector("#HS_Dropdown_Skills").innerHTML = `
@@ -604,45 +677,47 @@ const openAccount = function(){
 		
 		<div class="account-forms">
 		
-			<form class="form-account" method="post">
-			
-				<span class="form-row">
-					<label class="form-label">Username:</label>
-					<input class="form-input" id="signin-input-username" maxlength="200" type="text"></input>
-					<p class="form-warning" id="signin-warning-username"></p>
-				</span>
+			<form class="account-form" method="post">
 				
-				<span class="form-row">
-					<label class="form-label" >Password:</label>
-					<input class="form-input" id="signin-input-password" maxlength="200" type="password" maxlength="10"></input>
-					<p class="form-warning" id="signin-warning-password"></p>
+				<h2 class="account-form-title">Sign In</h2>
+				<span class="account-form-row">
+					<label class="account-form-label">Username:</label>
+					<input class="account-form-input" id="signin-input-username" maxlength="200" type="text"></input>
 				</span>
+				<p class="account-form-warning" id="signin-warning-username"></p>
 				
-				<button type="button" onclick="signIn()">Sign In</button>
+				<span class="account-form-row">
+					<label class="account-form-label" >Password:</label>
+					<input class="account-form-input" id="signin-input-password" maxlength="200" type="password" maxlength="10"></input>
+				</span>
+				<p class="account-form-warning" id="signin-warning-password"></p>
+				
+				<a class="account-form-button" onclick="signIn()">Sign In</a>
 				
 			</form>
 		
-			<form class="form-account" method="post">
-			
-				<span class="form-row">
-					<label class="form-label">Username:</label>
-					<input class="form-input" id="signup-input-username" maxlength="10"></input>
-					<p class="form-warning" id="signup-warning-username"></p>
-				</span>
+			<form class="account-form" method="post">
 				
-				<span class="form-row">
-					<label class="form-label">Email:</label>
-					<input class="form-input" id="signup-input-email" maxlength="200" type="email"></input>
-					<p class="form-warning" id="signup-warning-email"></p>
+				<h2 class="account-form-title">Sign Up</h2>
+				<span class="account-form-row">
+					<label class="account-form-label">Username:</label>
+					<input class="account-form-input" id="signup-input-username" maxlength="10"></input>
 				</span>
+				<p class="account-form-warning" id="signup-warning-username"></p>
 				
-				<span class="form-row">
-					<label class="form-label">Password:</label>
-					<input class="form-input" id="signup-input-password" maxlength="200" type="password"></input>
-					<p class="form-warning" id="signup-warning-password"></p>
+				<span class="account-form-row">
+					<label class="account-form-label">Email:</label>
+					<input class="account-form-input" id="signup-input-email" maxlength="200" type="email"></input>
 				</span>
+				<p class="account-form-warning" id="signup-warning-email"></p>
 				
-				<button type="button" onclick="signUp()">Sign Up</button>
+				<span class="account-form-row">
+					<label class="account-form-label">Password:</label>
+					<input class="account-form-input" id="signup-input-password" maxlength="200" type="password"></input>
+					</span>
+				<p class="account-form-warning" id="signup-warning-password"></p>
+				
+				<a class="account-form-button" onclick="signUp()">Sign Up</a>
 				
 			</form>
 			
@@ -773,80 +848,6 @@ const logOut = function(){
 
 start();
 
-const openHSPage = function(thePage){
-	
-	document.getElementById("HS_Players").innerHTML = 
-	`<div class="HS_Titles">
-		<h3 class="HS_PlayerRankTitle">Rank</h3>
-		<h3 class="HS_PlayerNameTitle">Player</h3>
-		<h3 class="HS_PlayerLevelTitle">Level</h3>
-		<h3 class="HS_PlayerExpTitle">Exp</h3>
-	</div>
-	`;
-	document.getElementById("HS_SkillTitle").innerHTML = thePage;
-		
-	let playersOnScreen = 0;
-	console.log(users.length);
-	while(playersOnScreen < users.length){
-		
-		document.getElementById("HS_Players").innerHTML +=
-		`<div class="HS_Player">
-			<h3 id="HS_Player` + playersOnScreen + `Rank" class="HS_PlayerRank"></h3>
-			<h3 id="HS_Player` + playersOnScreen + `Name" class="HS_PlayerName"></h3>
-			<h3 id="HS_Player` + playersOnScreen + `Level" class="HS_PlayerLevel"></h3>
-			<h3 id="HS_Player` + playersOnScreen + `EXP" class="HS_PlayerEXP"></h3>
-		</div>`;
-				
-		if(thePage == "Total Level" || thePage == "Total EXP"){
-			
-			let sortedUsers;
-			
-			if(thePage == "Total Level"){
-				
-				sortedUsers = users.sort(function(a, b){
-				
-					if(b.totalLevel - a.totalLevel == 0){ return b.totalEXP - a.totalEXP;     }
-					else{ 								  return b.totalLevel - a.totalLevel; }
-				});
-			}
-			else if(thePage == "Total EXP"){
-				
-				sortedUsers = users.sort(function(a, b){
-				
-					if(b.totalEXP - a.totalEXP == 0){ return b.totalLevel - a.totalLevel; }
-					else{ 	  						  return b.totalEXP - a.totalEXP;     }
-				});
-			}
-			
-			document.getElementById("HS_Player" + playersOnScreen + "Rank").innerHTML =  (playersOnScreen + 1);
-			document.getElementById("HS_Player" + playersOnScreen + "Name").innerHTML =	 sortedUsers[playersOnScreen].username;
-			document.getElementById("HS_Player" + playersOnScreen + "Level").innerHTML = sortedUsers[playersOnScreen].totalLevel.toLocaleString();
-			document.getElementById("HS_Player" + playersOnScreen + "EXP").innerHTML =	 sortedUsers[playersOnScreen].totalEXP.toLocaleString();
-			
-		}
-		else {
-			
-			for(var i = 0; i < users[playersOnScreen].skills.length; i++){
-				if(users[playersOnScreen].skills[i].skillName == thePage){ break; }
-			}
-			
-			let sortedUsers = users.sort(function(a, b){
-				
-				if(b.skills[i].level - a.skills[i].level == 0){	return b.skills[i].exp - a.skills[i].exp;     }
-				else{ 											return b.skills[i].level - a.skills[i].level; }
-			});
-			
-			document.getElementById("HS_Player" + playersOnScreen + "Rank").innerHTML = (playersOnScreen + 1);
-			document.getElementById("HS_Player" + playersOnScreen + "Name").innerHTML =	 sortedUsers[playersOnScreen].username;
-			document.getElementById("HS_Player" + playersOnScreen + "Level").innerHTML = sortedUsers[playersOnScreen].skills[i].level.toLocaleString();
-			document.getElementById("HS_Player" + playersOnScreen + "EXP").innerHTML =	 sortedUsers[playersOnScreen].skills[i].exp.toLocaleString();
-
-		}
-		playersOnScreen++;			
-	}
-}
-
-	
 
 
 

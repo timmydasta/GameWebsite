@@ -13,7 +13,7 @@ header.news_header{
 
 h2.news_title{
 	margin: 0;
-	color: #FFFFFF;
+	color: #ffde00;
 }
 
 div.news_img{
@@ -53,11 +53,13 @@ div.news_typedate{
 p.news_type{
 	text-align: left;
 	margin: 0 auto 0 0;
+	color: #ffde00;
 }
 
 p.news_date{
 	text-align: right;
 	margin: 0 0 0 auto;
+	color: #ffde00;
 }
 
 a.news_button{
@@ -76,7 +78,7 @@ a.news_button:hover{
 }
 
 a.news_button:hover p.news_type, a.news_button:hover p.news_date, a.news_button:hover h2.news_title{
-	color: #ffde00;
+	color: #FFFFFF;
 }
 
 a.news_button:hover div.news_img{

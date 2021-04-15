@@ -88,10 +88,11 @@ a.nav_button{
 	height: 60%;
 	text-align: center;
 	margin: auto;
+	color: #ffde00;
 }
 
 .nav_button:hover{
-	color: #005BBB;
+	color: #FFFFFF;
 	background-color: #979aa5;
 }
 
@@ -171,11 +172,11 @@ aside.guide_aside_left{
 h2.guide_title{
 	height: 30px;
 	margin: 0 0 10px auto;
-	color: #ffffff;
+	color: #ffde00;
 }
 
 a.guide_button:hover h2.guide_title{
-	color: #ffde00;
+	color: #ffffff;
 }
 
 p.guide_description{
