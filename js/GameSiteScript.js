@@ -146,7 +146,7 @@ const openNews = function(){
 	
 	document.getElementById("main").innerHTML += 
 	`
-		<a news_allbutton onclick="openNewsArchive()"><h2 class="news_allText">News Archive</h1></a>
+		<a class="news_allbutton" onclick="openNewsArchive()">News Archive</a>
 	`;
 }
 

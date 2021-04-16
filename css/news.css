@@ -69,10 +69,6 @@ a.news_button{
 	border-top: 1px solid black;
 }
 
-a.news_button:last-of-type{
-	border-bottom: 1px solid black;
-}
-
 a.news_button:hover{
 	background-color:rgba(198, 144, 14, 1);
 }
@@ -87,6 +83,20 @@ a.news_button:hover div.news_img{
 
 a.news_button:hover img.news_img{
 	transform: scale(1.05);
+}
+
+a.news_allbutton{
+	display: block;
+	text-align: center;
+	width: 30%;
+	background-color: #72757d;
+	border: 1px solid black;
+	padding: 0.2em 0;
+	margin: 0 0 0 auto;
+}
+
+a.news_allbutton:hover{
+	background-color: #72757d;
 }
 
 /** NEWS ARCHIVE PAGE 
