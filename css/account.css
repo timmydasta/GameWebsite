@@ -1,19 +1,22 @@
 div.account-forms{
 	display: flex;
+	
 }
 
+
 form.account-form{
+	margin: 0 auto 0 0;
 	border-top: solid 1px black;
 	border-bottom: solid 1px black;
 	padding: 1em;
-	width: 100%;
+	width: 45%;
 	height: 18em;
 	position: relative;
+	transition: background-color 1s;
 }
 
-form.account-form:last-of-type{
-	margin-left: 1em;
-	transition: background-color 1s;
+div.account-forms:last-child{
+	margin: 0 0 0 auto;
 }
 
 h2.account-form-title{
@@ -49,21 +52,22 @@ p.account-form-warning{
 
 a.account-form-button{
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	border: 2px solid black;
+	bottom: 0.6em;
+	right: 0.6em;
+	border: 1px solid black;
 	display: block;
-	margin: auto 0.5em 0.5em;
+	margin: auto 0 0 auto;
+	width: 50%;
 	padding: 0.2em 0;
 	background-color: #72757d;
 	text-align: center;
-	transition: background-color 1s;
-	color: #FFFFFF;
+	transition: background-color 0.5s, width 0.5s;
+
 }
 
 a.account-form-button:hover{
-	background-color: #979aa5;
+	background-color: #FFFFFF;
+	width: 60%;
 }
 
 a.account-form-button:hover h2.account-form-title{

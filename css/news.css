@@ -5,7 +5,10 @@ article.news_article{
 	margin: 0 auto;
 	display: flex;
 }
-
+div.news{
+	border-bottom: 1px solid black;
+	margin-bottom: 1em;
+}
 header.news_header{
 	margin: 0.5em 0;
 	border-bottom: 1px solid black;
@@ -93,10 +96,12 @@ a.news_allbutton{
 	border: 1px solid black;
 	padding: 0.2em 0;
 	margin: 0 0 0 auto;
+	transition: background-color 0.5s, width 0.5s;
 }
 
 a.news_allbutton:hover{
-	background-color: #72757d;
+	background-color: #FFFFFF;
+	width: 40%;
 }
 
 /** NEWS ARCHIVE PAGE 

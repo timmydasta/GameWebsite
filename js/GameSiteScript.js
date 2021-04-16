@@ -105,12 +105,13 @@ const openNews = function(){
 	document.getElementById("main").innerHTML = 
 	`
 		<h1 class="page-title">News</h1>
+		<div class="news"></div>
 	`;
 	
 	let i = 0;
 	while(i < 6){
 		
-		document.getElementById("main").innerHTML += 
+		document.querySelector(".news").innerHTML += 
 		`
 		<a class="news_button" id="news_button${i}" onclick="loadNewsPage('news/${newsArticles[i].newsLink}.html')">
 			
@@ -494,12 +495,19 @@ const openHS = function(){
 		<div class="HS-Main">
 		
 		
-			<aside class="HS_SkillButtons">
-					<a class="HS_SkillButton" onclick="openHSPage('Total Level')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Total Level</h3></a>
-					<a class="HS_SkillButton" onclick="openHSPage('Total EXP')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Total EXP</h3></a>
-					<a class="HS_SkillButton" onclick="collapseHSList('Skills')" 	><img class="HS_SkillIMG" src=""/>										<h3 class="name">Skills</h3> <img class="HS_SkillIMG" src=""/>	</a>
-					<div class="HS_dropdown" id="HS_Dropdown_Skills"></div>
-					<a class="HS_SkillButton" onclick="openHSPage('Quests')" 	><img class="HS_SkillIMG" src="" />										<h3 class="name">Quests</h3></a>
+			<aside class="HS_categories">
+					<a class="HS_category" id="HS_category-first" onclick="openHSPage('Total Level')" 	><img class="HS_categoryIMG" src="" />										<h3 class="name">Total Level</h3></a>
+					<a class="HS_category" onclick="openHSPage('Total EXP')" 							><img class="HS_categoryIMG" src="" />										<h3 class="name">Total EXP</h3></a>
+					
+					<a class="HS_category" onclick="collapseHSList('Skills')" 	>
+						<img class="HS_categoryIMG" src="img/SkillIcons/SkillsIcon.png"/>			
+						<h3 class="name">Skills</h3> 
+						<img class="HS_dropdownIMG" id="HS_dropdownIMG_skills" src="img/SkillIcons/DropdownIcon.png"/>
+					</a>
+					<div class="HS_dropdown" id="HS_dropdown_skills"></div>
+					
+					<a class="HS_category" onclick="openHSPage('Quests')" 	><img class="HS_categoryIMG" src="img/SkillIcons/QuestIcon.png" />				<h3 class="name">Quests</h3></a>
+					<a class="HS_category" onclick="openHSPage('Bounties')" ><img class="HS_categoryIMG" src="img/SkillIcons/BountyIcon.png" />			<h3 class="name">Bounties</h3></a>
 			</aside>
 			
 			<div id="HS_Players" class="HS_Players"></div>
@@ -507,24 +515,16 @@ const openHS = function(){
 			<aside class="HS_SearchAndCompare">
 				
 				<div class="HS_Search">
-					<div class="HS_Margin">
-						<h3 class="HS_SearchTitle">Search For A Player</h3>
-						<Input class="HS_SearchInput" id="HS_SearchInput"></Input>
-						<div class="HS_SearchCenter">
-							<a class="HS_Button" onclick="searchPlayer()">Search</a>
-						</div>
-					</div>
+					<h3 class="HS_SearchTitle">Search For A Player</h3>
+					<Input class="HS_SearchInput" id="HS_SearchInput"></Input>
+					<a class="HS_Button" onclick="searchPlayer()">Search</a>
 				</div>
 				
-				<div class="HS_Compare">
-					<div class="HS_Margin">
-						<h3 class="HS_CompareTitle">Compare Players</h3>
-						<Input class="HS_CompareInput" id="HS_CompareInputOne"></Input>
-						<Input class="HS_CompareInput" id="HS_CompareInputTwo"></Input>
-						<div class="HS_CompareCenter">
-							<a class="HS_Button" onclick="comparePlayers()">Compare</a>
-						</div>
-					</div>
+				<div class="HS_Search">
+					<h3 class="HS_SearchTitle">Compare Players</h3>
+					<Input class="HS_SearchInput" id="HS_CompareInputOne"></Input>
+					<Input class="HS_SearchInput" id="HS_CompareInputTwo"></Input>
+					<a class="HS_Button" onclick="comparePlayers()">Compare</a>
 				</div>
 			</aside>
 		</div>
@@ -535,6 +535,15 @@ const openHS = function(){
 
 const openHSPage = function(thePage){
 	
+	document.getElementById("HS_SkillTitle").innerHTML = thePage;
+	
+	if(thePage == "Quests"){
+		return;
+	}
+	else if(thePage == "Bounties"){
+		return;
+	}
+	
 	document.getElementById("HS_Players").innerHTML = 
 	`<div class="HS_Titles">
 		<h3 class="HS_PlayerRankTitle">Rank</h3>
@@ -543,7 +552,7 @@ const openHSPage = function(thePage){
 		<h3 class="HS_PlayerExpTitle">Exp</h3>
 	</div>
 	`;
-	document.getElementById("HS_SkillTitle").innerHTML = thePage;
+	
 		
 	let playersOnScreen = 0;
 	console.log(users.length);
@@ -606,39 +615,43 @@ const openHSPage = function(thePage){
 	}
 }
 	
+let rotation = 0;
 const collapseHSList = function(theList){
-	if(document.querySelector("#HS_Dropdown_Skills").innerHTML == ""){
-	document.querySelector("#HS_Dropdown_Skills").innerHTML = `
-		<a class="HS_SkillButton" onclick="openHSPage('Archery')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ArcheryIcon.png"/>		<h3 class="name">Archery</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Athleticism')"  	><img class="HS_SkillIMG" src="img/SkillIcons/AthleticismIcon.png"/>	<h3 class="name">Athleticism</h3>		</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Bounty Hunting')"><img class="HS_SkillIMG" src="img/SkillIcons/BountyHuntingIcon.png"/	><h3 class="name">Bounty Hunting</h3>	</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Camaraderie')" 	><img class="HS_SkillIMG" src="img/SkillIcons/CamaraderieIcon.png"/>	<h3 class="name">Camaraderie</h3>		</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Carpentry')" 	><img class="HS_SkillIMG" src="img/SkillIcons/CarpentryIcon.png"/>		<h3 class="name">Carpentry</h3>			</a>
-		<a class="HS_SkillButton"onclick="openHSPage('Chemistry')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ChemistryIcon.png"/>		<h3 class="name">Chemistry</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Cookery')" 		><img class="HS_SkillIMG" src="img/SkillIcons/CookeryIcon.png"/>		<h3 class="name">Cookery</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Crafting')" 		"><img class="HS_SkillIMG" src="img/SkillIcons/CraftingIcon.png"/>		<h3 class="name">Crafting</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Dowsing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/DowsingIcon.png"/>		<h3 class="name">Dowsing</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Endurance')" 	><img class="HS_SkillIMG" src="img/SkillIcons/EnduranceIcon.png"/>		<h3 class="name">Endurance</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Firelighting')" 	><img class="HS_SkillIMG" src="img/SkillIcons/FirelightingIcon.png"/>	<h3 class="name">Firelighting</h3>		</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Fishing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/FishingIcon.png"/>		<h3 class="name">Fishing</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Fletching')" 	><img class="HS_SkillIMG" src="img/SkillIcons/FletchingIcon.png"/>		<h3 class="name">Fletching</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Forestry')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ForestryIcon.png"/>		<h3 class="name">Forestry</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Health')" 		><img class="HS_SkillIMG" src="img/SkillIcons/HealthIcon.png"/>			<h3 class="name">Health</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Horticulture')" 	><img class="HS_SkillIMG" src="img/SkillIcons/HorticultureIcon.png"/>	<h3 class="name">Horticulture</h3>		</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Hunting')" 		><img class="HS_SkillIMG" src="img/SkillIcons/HuntingIcon.png"/>		<h3 class="name">Hunting</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Imbuing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/ImbuingIcon.png"/>		<h3 class="name">Imbuing</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Larceny')" 		><img class="HS_SkillIMG" src="img/SkillIcons/LarcenyIcon.png"/>		<h3 class="name">Larceny</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Maleficium')" 	><img class="HS_SkillIMG" src="img/SkillIcons/MaleficiumIcon.png"/>		<h3 class="name">Maleficium</h3>		</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Melee')" 		><img class="HS_SkillIMG" src="img/SkillIcons/MeleeIcon.png"/>			<h3 class="name">Melee</h3>				</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Mining')" 		><img class="HS_SkillIMG" src="img/SkillIcons/MiningIcon.png"/>			<h3 class="name">Mining</h3> 			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Smithing')" 		><img class="HS_SkillIMG" src="img/SkillIcons/SmithingIcon.png"/>		<h3 class="name">Smithing</h3>			</a>
-		<a class="HS_SkillButton" onclick="openHSPage('Thaumaturgy')" 	><img class="HS_SkillIMG" src="img/SkillIcons/ThaumaturgyIcon.png"/>	<h3 class="name">Thaumaturgy</h3>		</a>
+	rotation = rotation + 180;
+	if(document.querySelector("#HS_dropdown_skills").innerHTML == ""){
+		document.querySelector("#HS_dropdownIMG_skills").style.transform = `rotate(${rotation}deg)`;
+		
+	document.querySelector("#HS_dropdown_skills").innerHTML = `
+		<a class="HS_category" onclick="openHSPage('Archery')" 		><img class="HS_categoryIMG" src="img/SkillIcons/ArcheryIcon.png"/>		<h3 class="name">Archery</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Athleticism')"  ><img class="HS_categoryIMG" src="img/SkillIcons/AthleticismIcon.png"/>	<h3 class="name">Athleticism</h3>		</a>
+		<a class="HS_category" onclick="openHSPage('Bounty Hunting')"><img class="HS_categoryIMG" src="img/SkillIcons/BountyHuntingIcon.png"/><h3 class="name">Bounty Hunting</h3>	</a>
+		<a class="HS_category" onclick="openHSPage('Camaraderie')" 	><img class="HS_categoryIMG" src="img/SkillIcons/CamaraderieIcon.png"/>	<h3 class="name">Camaraderie</h3>		</a>
+		<a class="HS_category" onclick="openHSPage('Carpentry')" 	><img class="HS_categoryIMG" src="img/SkillIcons/CarpentryIcon.png"/>	<h3 class="name">Carpentry</h3>			</a>
+		<a class="HS_category"onclick="openHSPage('Chemistry')" 	><img class="HS_categoryIMG" src="img/SkillIcons/ChemistryIcon.png"/>	<h3 class="name">Chemistry</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Cookery')" 		><img class="HS_categoryIMG" src="img/SkillIcons/CookeryIcon.png"/>		<h3 class="name">Cookery</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Crafting')" 	><img class="HS_categoryIMG" src="img/SkillIcons/CraftingIcon.png"/>	<h3 class="name">Crafting</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Dowsing')" 		><img class="HS_categoryIMG" src="img/SkillIcons/DowsingIcon.png"/>		<h3 class="name">Dowsing</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Endurance')" 	><img class="HS_categoryIMG" src="img/SkillIcons/EnduranceIcon.png"/>	<h3 class="name">Endurance</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Firelighting')" ><img class="HS_categoryIMG" src="img/SkillIcons/FirelightingIcon.png"/><h3 class="name">Firelighting</h3>		</a>
+		<a class="HS_category" onclick="openHSPage('Fishing')" 		><img class="HS_categoryIMG" src="img/SkillIcons/FishingIcon.png"/>		<h3 class="name">Fishing</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Fletching')" 	><img class="HS_categoryIMG" src="img/SkillIcons/FletchingIcon.png"/>	<h3 class="name">Fletching</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Forestry')" 	><img class="HS_categoryIMG" src="img/SkillIcons/ForestryIcon.png"/>	<h3 class="name">Forestry</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Health')" 		><img class="HS_categoryIMG" src="img/SkillIcons/HealthIcon.png"/>		<h3 class="name">Health</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Horticulture')" ><img class="HS_categoryIMG" src="img/SkillIcons/HorticultureIcon.png"/><h3 class="name">Horticulture</h3>		</a>
+		<a class="HS_category" onclick="openHSPage('Hunting')" 		><img class="HS_categoryIMG" src="img/SkillIcons/HuntingIcon.png"/>		<h3 class="name">Hunting</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Imbuing')" 		><img class="HS_categoryIMG" src="img/SkillIcons/ImbuingIcon.png"/>		<h3 class="name">Imbuing</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Larceny')" 		><img class="HS_categoryIMG" src="img/SkillIcons/LarcenyIcon.png"/>		<h3 class="name">Larceny</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Maleficium')" 	><img class="HS_categoryIMG" src="img/SkillIcons/MaleficiumIcon.png"/>	<h3 class="name">Maleficium</h3>		</a>
+		<a class="HS_category" onclick="openHSPage('Melee')" 		><img class="HS_categoryIMG" src="img/SkillIcons/MeleeIcon.png"/>		<h3 class="name">Melee</h3>				</a>
+		<a class="HS_category" onclick="openHSPage('Mining')" 		><img class="HS_categoryIMG" src="img/SkillIcons/MiningIcon.png"/>		<h3 class="name">Mining</h3> 			</a>
+		<a class="HS_category" onclick="openHSPage('Smithing')" 	><img class="HS_categoryIMG" src="img/SkillIcons/SmithingIcon.png"/>	<h3 class="name">Smithing</h3>			</a>
+		<a class="HS_category" onclick="openHSPage('Thaumaturgy')" 	><img class="HS_categoryIMG" src="img/SkillIcons/ThaumaturgyIcon.png"/>	<h3 class="name">Thaumaturgy</h3>		</a>
 	`;
 	}
 	else{
-		document.querySelector("#HS_Dropdown_Skills").innerHTML = ``;
+		document.querySelector("#HS_dropdown_skills").innerHTML = ``;
+		document.querySelector("#HS_dropdownIMG_skills").style.transform = `rotate(${rotation}deg)`;
 	}
-
 }
 
 const openForums = function(){
