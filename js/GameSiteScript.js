@@ -295,15 +295,12 @@ const openGuide = function(){
 const openCombatGuide = function(){
 	document.querySelector("main").innerHTML = 
 	`
-	<div class="guide_breadcrumbs">
-		<a class="guide_breadcrumb" onclick="openGuide()">Guides &gt;</a>
-		<a class="guide_breadcrumb" onclick="openCombatGuide()">Combat Guide<a>
-	</div>
+	<header class="guide_header">
+		<h1 class="guide_header_title" onclick="openGuide()">Game Guide &gt;</h1>
+		<h1 class="guide_header_title">Combat Guide</h1>
+	</header>
 	
 	<article class="combatguide">
-		<header class="combatguide_header">
-			<h2 class="combatguide_header_title">Combat Guide</h2>
-		</header>
 		
 		<p class="combatguide_header_text content_rewrite">
 			GAMENAME's combat is exciting and challenging, with many different options and abilities to choose from. Thousands of armour and weapon combinations are available, and the strongest players are those who prepare well for battle.
@@ -348,22 +345,18 @@ const openCombatGuide = function(){
 }
 
 const openWorldGuide = function(){
-	document.querySelector("main").innerHTML = `
-	
-	<div class="guide_breadcrumbs">
-		<a class="guide_breadcrumb" onclick="openGuide()">Guides &gt;</a>
-		<a class="guide_breadcrumb" onclick="openWorldGuide()"> World Guide<a>
-	</div>
+	document.querySelector("main").innerHTML = 
+	`
+	<header class="guide_header">
+		<h1 class="guide_header_title" onclick="openGuide()">Game Guide &gt;</h1>
+		<h1 class="guide_header_title">World Guide</h1>
+	</header>
 	
 	<article class="worldguide">
-	
-		<header class="worldguide_header">
-			<h2 class="worldguide_header_title">World Guide</h2>
-		</header>
 		
-			<p class="worldguide_header_text content_rewrite">
-				description
-			</p>
+		<p class="worldguide_header_text content_rewrite">
+			description
+		</p>
 			
 		<article class="worldguide_article">
 			<h3 class="worldguide_article_title">Finding Your Way</h3>
@@ -466,15 +459,12 @@ const openQuestGuide = function(){
 	
 	document.querySelector("main").innerHTML = 
 	`
-	<div class="guide_breadcrumbs">
-		<a class="guide_breadcrumb" onclick="openGuide()">Guides &gt;</a>
-		<a class="guide_breadcrumb" onclick="openQuestGuide()"> World Guide<a>
-	</div>
+	<header class="guide_header">
+		<h1 class="guide_header_title" onclick="openGuide()">Game Guide &gt;</h1>
+		<h1 class="guide_header_title">Quest Guide</h1>
+	</header>
 	
 	<article class="questguide">
-		<header class="questguide_header">
-			<h2 class="questguide_header_title">Quest Guide</h2>
-		</header>
 		
 		<p class="questguide_header_text content_rewrite">
 			description
@@ -491,7 +481,6 @@ const openHS = function(){
 			
 		<h1 class="page-title">HighScores</h1>
 		
-		<h2 class="HS_SkillTitle" id="HS_SkillTitle"></h2>		
 		<div class="HS-Main">
 		
 		
@@ -510,20 +499,26 @@ const openHS = function(){
 					<a class="HS_category" onclick="openHSPage('Bounties')" ><img class="HS_categoryIMG" src="img/SkillIcons/BountyIcon.png" />			<h3 class="name">Bounties</h3></a>
 			</aside>
 			
-			<div id="HS_Players" class="HS_Players"></div>
+			<div id="hs-table" class="hs-table"></div>
 			
 			<aside class="HS_SearchAndCompare">
 				
 				<div class="HS_Search">
 					<h3 class="HS_SearchTitle">Search For A Player</h3>
 					<Input class="HS_SearchInput" id="HS_SearchInput"></Input>
+					<p class="hs-search-warning" id="hs-search-warning"></p>
 					<a class="HS_Button" onclick="searchPlayer()">Search</a>
 				</div>
 				
 				<div class="HS_Search">
 					<h3 class="HS_SearchTitle">Compare Players</h3>
+					
 					<Input class="HS_SearchInput" id="HS_CompareInputOne"></Input>
+					<p class="hs-search-warning" id="hs-player1-warning"></p>
+					
 					<Input class="HS_SearchInput" id="HS_CompareInputTwo"></Input>
+					<p class="hs-search-warning" id="hs-player2-warning"></p>
+					
 					<a class="HS_Button" onclick="comparePlayers()">Compare</a>
 				</div>
 			</aside>
@@ -535,83 +530,80 @@ const openHS = function(){
 
 const openHSPage = function(thePage){
 	
-	document.getElementById("HS_SkillTitle").innerHTML = thePage;
+	if(thePage == "Quests"){ return; }
+	else if(thePage == "Bounties"){ return; }
 	
-	if(thePage == "Quests"){
-		return;
-	}
-	else if(thePage == "Bounties"){
-		return;
-	}
+	document.getElementById("hs-table").innerHTML = 
+	`
+	<div class="skill-grid-container" id="skill-grid-container">
+		<div class="hs-skill-title-skill" style="grid-column: 1 / 5">
+			<img class="hs-skill-title-skill"src="img/SkillIcons/${thePage}Icon.png">
+			<h2 class="hs-skill-title-skill">${thePage}</h2>
+		</div>
 	
-	document.getElementById("HS_Players").innerHTML = 
-	`<div class="HS_Titles">
-		<h3 class="HS_PlayerRankTitle">Rank</h3>
-		<h3 class="HS_PlayerNameTitle">Player</h3>
-		<h3 class="HS_PlayerLevelTitle">Level</h3>
-		<h3 class="HS_PlayerExpTitle">Exp</h3>
+		<div class="hs-skill-title hs-skill-rank"><h3>Rank</h3></div>
+		<div class="hs-skill-title"><h3>Name</h3></div>
+		<div class="hs-skill-title"><h3>Level</h3></div>
+		<div class="hs-skill-title"><h3>Exp</h3></div>
 	</div>
 	`;
 	
-		
-	let playersOnScreen = 0;
-	console.log(users.length);
-	while(playersOnScreen < users.length){
-		
-		document.getElementById("HS_Players").innerHTML +=
-		`<div class="HS_Player">
-			<h3 id="HS_Player` + playersOnScreen + `Rank" class="HS_PlayerRank"></h3>
-			<h3 id="HS_Player` + playersOnScreen + `Name" class="HS_PlayerName"></h3>
-			<h3 id="HS_Player` + playersOnScreen + `Level" class="HS_PlayerLevel"></h3>
-			<h3 id="HS_Player` + playersOnScreen + `EXP" class="HS_PlayerEXP"></h3>
-		</div>`;
+	let sortedUsers;
+	let indexSkill;
+			
+	if(thePage == "Total Level"){
 				
+		sortedUsers = users.sort(function(a, b){
+				
+			if(b.totalLevel - a.totalLevel == 0){ return b.totalEXP - a.totalEXP;     }
+			else{ 								  return b.totalLevel - a.totalLevel; }
+		});
+	}
+	else if(thePage == "Total EXP"){
+				
+		sortedUsers = users.sort(function(a, b){
+				
+			if(b.totalEXP - a.totalEXP == 0){ return b.totalLevel - a.totalLevel; }
+			else{ 	  						  return b.totalEXP - a.totalEXP;     }
+		});
+	}			
+	else {
+		
+		indexSkill = users[0].skills.findIndex(x => x.skillName.toUpperCase() == thePage.toUpperCase());
+		sortedUsers = users.sort(function(a, b){
+				
+			if(b.skills[indexSkill].level - a.skills[indexSkill].level == 0){ return b.skills[indexSkill].exp - a.skills[indexSkill].exp; }
+			else{ 														  return b.skills[indexSkill].level - a.skills[indexSkill].level; }
+		});
+	}
+	
+	let i = 0;
+	while(i < users.length){
+		
+		document.querySelector("#skill-grid-container").innerHTML +=
+		`
+			<div class="hs-skill-field hs-skill-rank"><h3 class="hs-skill-field">${i + 1}</h3></div>
+			<div class="hs-skill-field"><h3 class="hs-skill-field">${sortedUsers[i].username}</h3></div>
+		`;
+		
 		if(thePage == "Total Level" || thePage == "Total EXP"){
 			
-			let sortedUsers;
-			
-			if(thePage == "Total Level"){
-				
-				sortedUsers = users.sort(function(a, b){
-				
-					if(b.totalLevel - a.totalLevel == 0){ return b.totalEXP - a.totalEXP;     }
-					else{ 								  return b.totalLevel - a.totalLevel; }
-				});
-			}
-			else if(thePage == "Total EXP"){
-				
-				sortedUsers = users.sort(function(a, b){
-				
-					if(b.totalEXP - a.totalEXP == 0){ return b.totalLevel - a.totalLevel; }
-					else{ 	  						  return b.totalEXP - a.totalEXP;     }
-				});
-			}
-			
-			document.getElementById("HS_Player" + playersOnScreen + "Rank").innerHTML =  (playersOnScreen + 1);
-			document.getElementById("HS_Player" + playersOnScreen + "Name").innerHTML =	 sortedUsers[playersOnScreen].username;
-			document.getElementById("HS_Player" + playersOnScreen + "Level").innerHTML = sortedUsers[playersOnScreen].totalLevel.toLocaleString();
-			document.getElementById("HS_Player" + playersOnScreen + "EXP").innerHTML =	 sortedUsers[playersOnScreen].totalEXP.toLocaleString();
-			
+			document.querySelector("#skill-grid-container").innerHTML +=
+			`
+			<div class="hs-skill-field"><h3 class="hs-skill-field">${sortedUsers[i].totalLevel}</h3></div>
+			<div class="hs-skill-field"><h3 class="hs-skill-field">${sortedUsers[i].totalEXP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3></div>
+			`;
 		}
 		else {
-			
-			for(var i = 0; i < users[playersOnScreen].skills.length; i++){
-				if(users[playersOnScreen].skills[i].skillName == thePage){ break; }
-			}
-			
-			let sortedUsers = users.sort(function(a, b){
-				
-				if(b.skills[i].level - a.skills[i].level == 0){	return b.skills[i].exp - a.skills[i].exp;     }
-				else{ 											return b.skills[i].level - a.skills[i].level; }
-			});
-			
-			document.getElementById("HS_Player" + playersOnScreen + "Rank").innerHTML = (playersOnScreen + 1);
-			document.getElementById("HS_Player" + playersOnScreen + "Name").innerHTML =	 sortedUsers[playersOnScreen].username;
-			document.getElementById("HS_Player" + playersOnScreen + "Level").innerHTML = sortedUsers[playersOnScreen].skills[i].level.toLocaleString();
-			document.getElementById("HS_Player" + playersOnScreen + "EXP").innerHTML =	 sortedUsers[playersOnScreen].skills[i].exp.toLocaleString();
-
+		
+			document.querySelector("#skill-grid-container").innerHTML +=
+			`
+			<div class="hs-skill-field"><h3 class="hs-skill-field">${sortedUsers[i].skills[indexSkill].level}</h3></div>
+			<div class="hs-skill-field"><h3 class="hs-skill-field">${sortedUsers[i].skills[indexSkill].exp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3></div>
+			`;
 		}
-		playersOnScreen++;			
+		
+		i++;
 	}
 }
 	
@@ -651,6 +643,133 @@ const collapseHSList = function(theList){
 	else{
 		document.querySelector("#HS_dropdown_skills").innerHTML = ``;
 		document.querySelector("#HS_dropdownIMG_skills").style.transform = `rotate(${rotation}deg)`;
+	}
+}
+
+const searchPlayer = function(){
+	document.querySelector("#hs-search-warning").innerHTML = "";
+	
+	if(document.querySelector("#HS_SearchInput").innerHTML.value == ""){
+		document.querySelector("#hs-search-warning").innerHTML = "";
+	}
+	else {
+		
+	}
+}
+
+const comparePlayers = function(){
+	
+	let userOne = document.querySelector("#HS_CompareInputOne").value;	let userTwo = document.querySelector("#HS_CompareInputTwo").value;
+	
+	userOne = "timmydasta"; userTwo = "zinch";
+	
+	document.querySelector("#hs-player1-warning").innerHTML = "";	document.querySelector("#hs-player2-warning").innerHTML = "";
+	
+	if(userOne == ""){
+		document.querySelector("#hs-player1-warning").innerHTML = "Please enter a player name";
+	}
+	if(userTwo == ""){
+		document.querySelector("#hs-player2-warning").innerHTML = "Please enter a player name";
+	}
+	if(userOne != "" || userTwo != ""){
+		
+		let userOneFound = false; let userTwoFound = false;
+		
+		$.getJSON(`https://more-pig.firebaseio.com/Users/${userOne.toUpperCase()}.json`, function(result){
+			if(result == null){
+				document.querySelector("#hs-player1-warning").innerHTML = "That user doesn't exist";
+			}
+			else{
+				userOneFound = true;
+			}
+		});
+		
+		$.getJSON(`https://more-pig.firebaseio.com/Users/${userTwo.toUpperCase()}.json`, function(result){
+			if(result == null){
+				document.querySelector("#hs-player2-warning").innerHTML = "That user doesn't exist";
+			}
+			else{
+				userTwoFound = true;
+			}
+		});
+		
+		setTimeout(function(){
+			if(userOneFound == true && userTwoFound == true){
+			
+				let indexOne = users.findIndex(x => x.username.toUpperCase() == userOne.toUpperCase());
+				let indexTwo = users.findIndex(x => x.username.toUpperCase() == userTwo.toUpperCase());
+					
+				document.getElementById("hs-table").innerHTML = 
+				`
+				<div class="compare-grid-container" id="compare-grid-container">
+					<div class="hs-compare-title-empty" style="grid-column: 1 / 2"></div>
+					<div class="hs-compare-title-player" style="grid-column: 2 / 4">
+						<h2 class="hs-compare-title-player">${users[indexOne].username}</h2>
+					</div>
+					<div class="hs-compare-title-player hs-compare-borderright" style="grid-column: 4 / 6">
+						<h2 class="hs-compare-title-player">${users[indexTwo].username}</h2>
+					</div>
+					
+					<div class="hs-compare-title-skill" style="grid-column: 1 / 2"><h3>Skill</h3></div>
+					<div class="hs-compare-title"><h3>Level</h3></div>
+					<div class="hs-compare-title"><h3>Exp</h3></div>
+					<div class="hs-compare-title"><h3>Level</h3></div>
+					<div class="hs-compare-title hs-compare-borderright"><h3>Exp</h3></div>
+				</div>
+				`;
+				
+				let i = 0;
+				while(i < 24){
+					
+					let skillName = users[indexOne].skills[i].skillName;
+					if(skillName == "Bounty Hunting"){ skillName = "BountyHunting"; }
+				
+					document.querySelector("#compare-grid-container").innerHTML +=
+					`
+					<div class="hs-compare-skill" style="grid-column: 1 / 2">
+						<img class="hs-compare-skill" src="img/SkillIcons/${skillName}Icon.png"/>
+						<h3 class="hs-compare-field">${users[indexOne].skills[i].skillName}</h3>
+					</div>
+					
+					<div class="hs-compare-level" id="hs-compare-one-level-${skillName}">
+						<h3 class="hs-compare-field">${users[indexOne].skills[i].level}</h3>
+					</div>
+					
+					<div class="hs-compare-exp"   id="hs-compare-one-exp-${skillName}">
+						<h3 class="hs-compare-field">${users[indexOne].skills[i].exp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
+					</div>
+					
+					<div class="hs-compare-level" id="hs-compare-two-level-${skillName}">
+						<h3 class="hs-compare-field">${users[indexTwo].skills[i].level}</h3>
+					</div>
+					
+					<div class="hs-compare-exp hs-compare-borderright"   id="hs-compare-two-exp-${skillName}">
+						<h3 class="hs-compare-field">${users[indexTwo].skills[i].exp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
+					</div>
+					`;
+					
+					if(users[indexOne].skills[i].exp > users[indexTwo].skills[i].exp){
+						document.querySelector(`#hs-compare-one-level-${skillName}`).style.backgroundColor = "#edd682";
+						document.querySelector(`#hs-compare-one-exp-${skillName}`).style.backgroundColor = "#edd682";
+						
+						document.querySelector(`#hs-compare-two-level-${skillName}`).style.backgroundColor = "#c2c2c2";
+						document.querySelector(`#hs-compare-two-exp-${skillName}`).style.backgroundColor = "#c2c2c2";
+					}
+					else if(users[indexOne].skills[i].exp < users[indexTwo].skills[i].exp){
+						document.querySelector(`#hs-compare-one-level-${skillName}`).style.backgroundColor = "#c2c2c2";
+						document.querySelector(`#hs-compare-one-exp-${skillName}`).style.backgroundColor = "#c2c2c2";
+						
+						document.querySelector(`#hs-compare-two-level-${skillName}`).style.backgroundColor = "#edd682";
+						document.querySelector(`#hs-compare-two-exp-${skillName}`).style.backgroundColor = "#edd682";
+					}
+					
+					i++;
+				}
+
+				
+				
+			}
+		}, 1000);
 	}
 }
 
@@ -701,8 +820,16 @@ const openAccount = function(){
 				
 				<span class="account-form-row">
 					<label class="account-form-label" >Password:</label>
-					<input class="account-form-input" id="signin-input-password" maxlength="200" type="password" maxlength="10"></input>
+					<input class="account-form-input" id="signin-input-password" maxlength="200" type="password" maxlength="10">
+						<span class="account-form-showpassword">
+							<label class="account-form-showpassword">Show</label>
+							<input class="account-form-showpassword" id="signin-checkbox-password" type="checkbox" onclick="checkboxEvent('signin')"></input>
+						</span>
+					</input>
 				</span>
+				
+
+				
 				<p class="account-form-warning" id="signin-warning-password"></p>
 				
 				<a class="account-form-button" onclick="signIn()">Sign In</a>
@@ -726,8 +853,14 @@ const openAccount = function(){
 				
 				<span class="account-form-row">
 					<label class="account-form-label">Password:</label>
-					<input class="account-form-input" id="signup-input-password" maxlength="200" type="password"></input>
-					</span>
+					<input class="account-form-input" id="signup-input-password" maxlength="20" type="password">
+						<span class="account-form-showpassword">
+							<label class="account-form-showpassword">Show</label>
+							<input class="account-form-showpassword" id="signup-checkbox-password" type="checkbox" onclick="checkboxEvent('signup')"></input>
+						</span>
+					</input>
+				</span>
+								
 				<p class="account-form-warning" id="signup-warning-password"></p>
 				
 				<a class="account-form-button" onclick="signUp()">Sign Up</a>
@@ -749,12 +882,20 @@ const openAccount = function(){
 	}
 }
 
+const checkboxEvent = function(theForm){
+	if(document.querySelector(`#${theForm}-checkbox-password`).checked){
+		document.querySelector(`#${theForm}-input-password`).type = "Text";
+	}
+	else {
+		document.querySelector(`#${theForm}-input-password`).type = "Password";
+	}
+}
+
 const signIn = function(){
 	document.querySelector("#signin-warning-username").innerHTML = "";	document.querySelector("#signin-warning-password").innerHTML = "";
 	
 	let theUsername = ""; let thePassword = "";
 		
-	console.log(document.querySelector("#signin-input-username").value.length);
 	if(document.querySelector("#signin-input-username").value == ""){
 		document.querySelector("#signin-warning-username").innerHTML = "This field is required.";
 	}
@@ -805,7 +946,7 @@ const signUp = function(){
 		document.querySelector("#signup-warning-username").innerHTML = "This field is required.";
 	}
 	else if(document.querySelector("#signup-input-username").value.length < 5){
-		document.querySelector("#signup-warning-username").innerHTML = "Please enter a valid username between 5 & 18 characters long.";
+		document.querySelector("#signup-warning-username").innerHTML = "Enter a username between 5 & 18 characters long.";
 	}
 	else{
 		theUsername = document.querySelector("#signup-input-username").value;
@@ -822,7 +963,7 @@ const signUp = function(){
 		document.querySelector("#signup-warning-password").innerHTML = "This field is required.";
 	}
 	else if(document.querySelector("#signup-input-password").value.length < 6){
-		document.querySelector("#signup-warning-password").innerHTML = "Please enter a valid username between 6 & 20r characters long.";
+		document.querySelector("#signup-warning-password").innerHTML = "Enter a password between 6 & 20 characters long.";
 	}
 	else{
 		thePassword = document.querySelector("#signup-input-password").value;

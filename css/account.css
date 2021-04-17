@@ -3,14 +3,13 @@ div.account-forms{
 	
 }
 
-
 form.account-form{
 	margin: 0 auto 0 0;
 	border-top: solid 1px black;
 	border-bottom: solid 1px black;
 	padding: 1em;
-	width: 45%;
-	height: 18em;
+	width: 48%;
+	height: 20em;
 	position: relative;
 	transition: background-color 1s;
 }
@@ -31,23 +30,43 @@ span.account-form-row{
 
 label.account-form-label{
 	margin: 0;
-	width: 30%;
-	font-family: 'Montserrat', sans-serif;
+	min-width: 30%;
 	font-size: 20px;
 	color: #FFFFFF;
 }
 
 input.account-form-input{
-	margin: 0;
+	padding: 0 0.5em;
 	width: 70%;
+	border: 1px solid black;
+	font-size: 14px;
+	outline: none;
 }
 
 p.account-form-warning{
 	margin: 0.1em 0 1em 0;
-	font-size: 14px;
+	font-size: 12px;
 	height: 14px;
 	color: #FFFFFF;
 	text-align: right;
+}
+
+span.account-form-showpassword{
+	display: flex;
+	margin: 0 auto;
+	background-color: #72757d;
+	width: 6em;
+	border: 1px solid black;
+	border-left: none;
+}
+
+label.account-form-showpassword{
+	margin: auto 0.5em;
+	font-size: 14px;
+}
+
+input.account-form-showpassword{
+	margin: auto 0.5em auto 0;
 }
 
 a.account-form-button{
@@ -75,6 +94,6 @@ a.account-form-button:hover h2.account-form-title{
 }
 
 form.account-form:hover{
-	background-color:rgba(198, 144, 14, 1);
+	background-color: #c0840a;
 }
 		

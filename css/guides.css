@@ -26,7 +26,7 @@ a.guide_button{
 }
 
 a.guide_button:hover .guide_img_shell{
-	background-color:rgba(198, 144, 14, 1);
+	background-color: #c0840a;
 }
 
 .guide_img{
@@ -101,15 +101,13 @@ article.skillguide{
 	border: 2px solid black;
 }
 
-header.skillguide_header{
-	background-color: #72757d;
-	border-bottom: 2px solid black;
+header.guide_header{
+	display: flex;
+	margin-bottom: 1em;
 }
 
-h1.skillguide_header_title{
-	margin: 0;
-	color: #FFFFFF;
-	padding: 0.5em;
+h1.guide_header_title{
+	margin: 0 0.5em 0 0;
 }
 
 p.skillguide_header_text{
@@ -294,17 +292,6 @@ article.combatguide{
 	border: 2px solid black;
 }
 
-header.combatguide_header{
-	background-color: #72757d;
-	border-bottom: 2px solid black;
-}
-
-h1.combatguide_header_title{
-	margin: 0;
-	color: #FFFFFF;
-	padding: 0.5em;
-}
-
 p.combatguide_header_text{
 	font-size: 18px;
 }
@@ -330,17 +317,6 @@ article.worldguide{
 	border: 2px solid black;
 }
 
-header.worldguide_header{
-	background-color: #72757d;
-	border-bottom: 2px solid black;
-}
-
-h1.worldguide_header_title{
-	margin: 0;
-	color: #FFFFFF;
-	padding: 0.5em;
-}
-
 p.worldguide_header_text{
 	font-size: 18px;
 }
@@ -364,17 +340,6 @@ p.worldguide_article_description{
 
 article.questguide{
 	border: 2px solid black;
-}
-
-header.questguide_header{
-	background-color: #72757d;
-	border-bottom: 2px solid black;
-}
-
-h1.questguide_header_title{
-	margin: 0;
-	color: #FFFFFF;
-	padding: 0.5em;
 }
 
 p.questguide_header_text{

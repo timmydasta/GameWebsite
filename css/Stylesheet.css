@@ -21,7 +21,7 @@ body{
 	width: 100%;
 	height: 100%;
 	margin: auto;
-	background-color: #9f5600;
+	background-color: #b05f00;
 }
 
 h1, h2, h3, h4, a {
@@ -29,14 +29,17 @@ h1, h2, h3, h4, a {
 }
 
 h1{
+	margin: 0.5em auto;
 	font-size: 36px;
 }
 
 h2{
+	margin: 0;
 	font-size: 28px;
 }
 
 h3{
+	margin: 0;
 	font-size: 20px;
 }
 
@@ -49,6 +52,14 @@ p {
 a {
 	text-decoration: none;
 	font-size: 25px;
+}
+
+label{
+	font-family: 'Montserrat', sans-serif;
+}
+
+input{
+	font-family: 'Montserrat', sans-serif;
 }
 
 header{
@@ -146,11 +157,6 @@ h2.hs-title{
 	border-bottom: 1px solid black;
 }
 
-h2.HS_SkillTitle{
-	margin: 0 0 0.5em 0;
-	text-align: center
-}
-
 div.HS-Main{
 	display: flex;
 }
@@ -203,82 +209,58 @@ a.HS_category:hover{
 	margin: 0;
 }
 
-div.HS_Titles{
-	display: flex;
-	margin: 0;
-	width: 100%;
-	height: 2em;
-}
-
-div.HS_Players{
+div.hs-table{
+	min-width: 500px;
 	height: 100%;
-	background-color: #929292;
 	margin: 0 1em;
 	padding: 0;
-	border: 1px solid black;
 }
 
-div.HS_Player{
-	height: 1.5em;
-	display: flex;
-	background-color: #FFFFFF;
-	vertical-align: middle;
+div.skill-grid-container{
+	display: grid;
+	grid-template-columns: 80px 160px 80px auto;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+}
+
+div.hs-skill-title-skill{
+	position: relative;
+	height: 61px;
+	padding: 5px;
+	background-color: #929292;
 	border-bottom: 1px solid black;
+	border-left: 1px solid black;
 }
 
-h3.HS_PlayerRankTitle, h3.HS_PlayerNameTitle, h3.HS_PlayerLevelTitle, h3.HS_PlayerExpTitle{
-	margin: 0 0 0 0.5em;
-	padding: 0.2em 0;
-	border-right: 1px solid black;
+img.hs-skill-title-skill{
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	height: 50px;
+	width: 50px;
 }
 
-h3.HS_PlayerRank, h3.HS_PlayerName, h3.HS_PlayerLevel, h3.HS_PlayerEXP{
-	margin: 0 0 0 0.5em;
-	border-right: 1px solid black;
-}
- 
-h3.HS_PlayerRankTitle{
-	width: 10%;
-	min-width: 60px;
+h2.hs-skill-title-skill{
+	margin-left: 60px;
+	margin-top: 9px;
 }
 
-h3.HS_PlayerNameTitle{
-	min-width: 180px;
+div.hs-skill-title{
+	padding: 0.2em 0.5em;
+	background-color: #929292;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
 }
 
-h3.HS_PlayerLevelTitle{
-	width: 10%;
-	min-width: 50px;
-	padding-right: 10px;
+div.hs-skill-field{
+	background-color: #FFFFFF;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	min-height: 32px;
 }
 
-h3.HS_PlayerExpTitle{
-	width: 100%;
-	min-width: 180px;
-	padding-right: 10px;
-}
-
-h3.HS_PlayerRank{
-	width: 10%;
-	min-width: 60px;
-}
-
-h3.HS_PlayerName{
-	min-width: 180px;
-}
-
-h3.HS_PlayerLevel{
-	width: 10%;
-	min-width: 50px;
-	text-align: right;
-	padding-right: 10px;
-}
-
-h3.HS_PlayerEXP{
-	width: 100%;
-	min-width: 180px;
-	text-align: right;
-	padding-right: 10px;
+h3.hs-skill-field{
+	margin: 0.2em 0.5em;
 }
 
 aside.HS_SearchAndCompare{
@@ -288,7 +270,7 @@ aside.HS_SearchAndCompare{
 div.HS_Search{
 	position: relative;
 	padding: 0.5em;
-	height: 10em;
+	height: 12em;
 	background-color: transparent;
 	border-top: 1px solid black;
 	transition: background-color 1s;
@@ -334,3 +316,79 @@ a.HS_Button:hover{
 	background-color: #FFFFFF;
 	width: 70%;
 }
+
+
+/**HIGHSCORES - COMPARE ******************************************************/
+
+div.compare-grid-container{
+	display: grid;
+	grid-template-columns: auto auto auto auto auto;
+}
+
+div.hs-compare-title-empty{
+	border-bottom: 1px solid black;
+}
+
+div.hs-compare-title-player{
+	height: 60px;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+	background-color: #929292;
+}
+
+h2.hs-compare-title-player{
+	margin-top: 13px;
+}
+
+div.hs-compare-title-skill{
+	border: 1px solid black;
+	border-top: none;
+	border-right: none;
+	padding: 0.2em 0.5em;
+	background-color: #929292;
+}
+
+div.hs-compare-title{
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 0.2em 0.5em;
+	background-color: #929292;
+}
+
+div.hs-compare-skill{
+	display: flex;
+	min-height: 32px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+}
+
+div.hs-compare-level{
+	background-color: #FFFFFF;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+div.hs-compare-exp{
+	background-color: #FFFFFF;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+h3.hs-compare-field{
+	margin: 0.2em 0.5em;
+}
+
+img.hs-compare-skill{
+	margin: auto 0 auto 0.5em;
+	height: 25px;
+	width: 25px;
+}
+
+.hs-compare-borderright{
+	border-right: 1px solid black;
+}
+
+

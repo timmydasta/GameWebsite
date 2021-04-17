@@ -73,7 +73,7 @@ a.news_button{
 }
 
 a.news_button:hover{
-	background-color:rgba(198, 144, 14, 1);
+	background-color: #c0840a;
 }
 
 a.news_button:hover p.news_type, a.news_button:hover p.news_date, a.news_button:hover h2.news_title{
@@ -160,5 +160,5 @@ p.newsarchive_date{
 }
 
 a.newsarchive_button:hover{
-	background-color:rgba(198, 144, 14, 1);
+	background-color: #c0840a;
 }

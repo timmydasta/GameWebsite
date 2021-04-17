@@ -2,15 +2,14 @@
 const openSkillGuide = function(){
 	document.querySelector("main").innerHTML = 	`
 	
-	<div class="guide_breadcrumbs">
-		<a class="guide_breadcrumb" onclick="openGuide()">Guides &gt;</a>
-		<a class="guide_breadcrumb" onclick="openSkillGuide()">Skill Guide<a>
-	</div>
-	
+	<header class="guide_header">
+		<h1 class="guide_header_title" onclick="openGuide()">Game Guide &gt;</h1>
+		<h1 class="guide_header_title">Skill Guide</h1>
+	</header>
+		
 	<article class="skillguide">
-		<header class="skillguide_header">
-			<h1 class="skillguide_header_title">Skill Guide</h1>
-		</header>
+		
+
 		
 			<p class="skillguide_header_text content_rewrite">
 				GAMENAME's skills represent your character's capabilities.
