@@ -25,20 +25,20 @@
 	<body>
 		
 		<header class="main-header">
-			<div class="navbar-outer">
-				<div class="navbar" id="navbar">
+			<nav class="navbar-outer">
+				<ul class="navbar" id="navbar">
 				
-					<div class="nav_button nav_button_news">
+					<li class="nav_button nav_button_news">
 						<a class="nav_button nav_button_news" id="nav_button_news" onclick="openNews()">News</a>	
-					</div>
+					</li>
 					
-					<div class="nav_button nav_button_guide">				
+					<li class="nav_button nav_button_guide">				
 						<a class="nav_button nav_button_guide" id="nav_button_guide" onclick="openGuide()">Game Guide</a>
-					</div>
+					</li>
 					
-					<div class="nav_button nav_button_scores">				
+					<li class="nav_button nav_button_scores">				
 						<a class="nav_button nav_button_scores" id="nav_button_scores" onclick="openHS()">HighScores</a>
-					</div>
+					</li>
 					
 					<!-- I'm not entirely sure if I want a forums page
 					<div class="nav_button nav_button_forums">				
@@ -52,12 +52,17 @@
 					</div>
 					-->
 					
-					<div class="nav_button nav_button_account">				
+					<li class="nav_button nav_button_account">				
 						<a class="nav_button nav_button_account" id="nav_button_account" onclick="openAccount()">Account</a>
-					</div>
+					</li>
 				
-				</div>
-			</div>
+				</ul>
+			</nav>
+			
+			<select>
+				<option value="" selected="selected"></option>
+				<option onclick="openAccount()">Account</option>
+			</select>
 		
 			<div id="admin_toolbar">
 			</div>

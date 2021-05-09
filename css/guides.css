@@ -98,7 +98,9 @@ a.guide_breadcrumb:hover{
 ********************************************************/
 
 article.skillguide{
-	border: 2px solid black;
+	border: 1px solid black;
+	background-color:rgba(198, 144, 14, 1);
+	padding: 0.5em;
 }
 
 header.guide_header{
@@ -107,25 +109,28 @@ header.guide_header{
 }
 
 h1.guide_header_title{
-	margin: 0 0.5em 0 0;
+	margin: 0 0.2em 0 0;
+}
+
+h1.guide_header_title:hover{
+	color:#FFFFFF;
 }
 
 p.skillguide_header_text{
-	font-size: 18px;
+	margin: 0 0 1em 0;
 }
 
 article.skillguide_category{
-	border: 2px solid black;
-	padding: 0 10px 10px 10px;
-	margin: 10px 10px 0 10px;
+	border-bottom: 2px solid black;
+	margin-bottom: 1em;
 }
 
-h3.skillguide_category_title{
+h2.skillguide_category_title{
 	margin: 0 auto;
 }
 
 p.skillguide_category_description{
-	font-size: 18px;
+	margin: 0 0 0.5em 0;
 }
 
 table.skillguide_skills{
@@ -138,12 +143,16 @@ tr.skillguide_skill{
 	width: 100%;
 	height: 70px;
 	display: flex;
-	border: 2px solid black;
+	border-bottom: 1px solid black;
 	border-top: none;
 }
 
 tr.skillguide_skill:first-child {
-	border-top: 2px solid black;
+	border-top: 1px solid black;
+}
+
+tr.skillguide_skill:hover {
+	background-color:rgba(255, 255, 255, 1);
 }
 
 th.skillguide_skill_header{
@@ -164,8 +173,7 @@ img.skillguide_skillicon{
 	margin: auto 0 auto 10px;
 }
 
-h4.skillguide_skill_title{
-	font-size: 18px;
+h3.skillguide_skill_title{
 	text-align: left;
 	margin: auto 0 auto 20px;
 }	
@@ -191,8 +199,9 @@ a.skillguide_skill_button:hover{
 	background-color: #979aa5;
 }
 
-article.specificskill{
-	border: 2px solid black;
+article.specificskill_main{
+	border: 1px solid black;
+	padding: 0.5em;
 }
 
 header.specificskill_header{
@@ -221,9 +230,8 @@ button.specificskill_top{
 }
 
 div.specificskill_grid_div{
-	border: 2px solid black;
-	margin: 0 auto 10px auto;
-	width: 95%;
+	border: 1px solid black;
+	margin: 0 auto 0.5em auto;
 }
 
 header.specificskill_grid_header{
@@ -240,6 +248,11 @@ h3.specificskill_grid_title{
 	vertical-align: middle;
 }
 
+header.skillguide_section_header{
+	display: flex;
+	width: 100%;
+}
+
 button.specificskill_grid_dropdown{
 	min-width: 45px;
 	min-height: 45px;
@@ -253,8 +266,8 @@ div.specificskill_grid{
 }
 
 div.specificskill_img{
-	height: 80px;
-	width: 80px;
+	height: 70px;
+	width: 70px;
 	grid-area: specificskill_img;
 }
 
