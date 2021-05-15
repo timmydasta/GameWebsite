@@ -1,10 +1,15 @@
 
 const openSkillGuide = function(){
 	document.querySelector("main").innerHTML = 	`
-	
 	<header class="guide_header">
-		<h1 class="guide_header_title" onclick="openGuide()">Game Guide &gt;</h1>
-		<h1 class="guide_header_title">Skill Guide</h1>
+		<ul class="guide_header_breadcrumbs">
+			<li class="guide_header_breadcrumb">
+				<a class="guide_header_breadcrumb" onclick="openGuide()">Game Guide &gt;</a>
+			</li>
+		</ul>
+		<span class="guide_header_title">
+			<h1 class="guide_header_title">Skill Guide</h1>
+		</span>
 	</header>
 		
 	<article class="skillguide">
@@ -425,10 +430,18 @@ const openSpecificSkillGuide = function(theSkill){
 	
 	document.querySelector("main").innerHTML = `
 		<header class="guide_header">
-			<h1 class="guide_header_title" onclick="openGuide()">Game Guide &gt;</h1>
-			<h1 class="guide_header_title" onclick="openSkillGuide()">Skill Guide &gt;</h1>
-			<h1 class="guide_header_title">${theSkill}</h1>
-			<img class="specificskill_header_img" src="img/SkillIcons/${theSkill}Icon.png" alt="">
+			<ul class="guide_header_breadcrumbs">
+				<li class="guide_header_breadcrumb">
+					<a class="guide_header_breadcrumb" onclick="openGuide()">Game Guide &gt;</a>
+				</li>
+				<li class="guide_header_breadcrumb">
+					<a class="guide_header_breadcrumb" onclick="openSkillGuide()">Skill Guide &gt;</a>
+				</li>
+			</ul>
+			<span class="guide_header_title">
+				<img class="guide_header_img" src="img/SkillIcons/${theSkill}Icon.png" alt="">
+				<h1 class="guide_header_title">${theSkill}</h1>
+			</span>
 		</header>
 				
 		<article class="specificskill_main" id="specificskill_main">
@@ -457,24 +470,73 @@ const openSpecificSkillGuide = function(theSkill){
 }
 
 const createGrid = function(name, items){
-
-	let gridTemplate = `<div class="specificskill_grid_outline">`;
-	let i = 0;
 	
-	while(i < items){
+	let gridTemplate = ``;
+	let type = "Weapon";
+	let i = 0;
+	if(type == "Weapon"){
+		
 		gridTemplate +=
-		`<div class="specificskill_grid" 	  id="${name}_specificskill_grid_T${i}">
-			<div class="specificskill_img" id="${name}_img_T${i}"></div>
-			<div class="specificskill_name"><p class="specificskill_desc" id="${name}_name_T${i}">Name</p> </div>
-			<div class="specificskill_lvl"> <p class="specificskill_desc" id="${name}_lvl_T${i}" >Level</p></div>
-			<div class="specificskill_exp">	<p class="specificskill_exp"  id="${name}_exp_T${i}" >EXP</p>	 </div>
-			<div class="specificskill_desc"><p class="specificskill_desc" id="${name}_desc_T${i}">Descr</p></div>
+			`<header class="weapon_grid_header">
+				
+				<div class="weapon_grid_header_item">		
+					<p class="weapon_grid_header_title">Item</p> 
+				</div>
+				
+				<div class="weapon_grid_header_level">
+					<p class="weapon_grid_header_title">Level Required</p>
+				</div>
+				
+				<div class="weapon_grid_header_damage">
+					<p class="weapon_grid_header_title">Damage Bonus</p>
+					<button class="specificskill_grid_dropdown" onclick="hideSkillGrid('${name}')"></button>					
+				</div>
+				
+			</header>
+			<div class="specificskill_grid_outline" id="specificskill_grid_${name}" style="display:block;">
+			`;
 		
-		</div>`;
-		
-		i++;
+		while(i < items){
+			gridTemplate +=
+				`<div class="weapon_grid_row" 	  	id="${name}_specificskill_grid_T${i}">
+					
+					<div class="weapon_grid_item">
+						<img 	class="weapon_grid_item_img" 	id="${name}_img_T${i}" src=""/>
+						<p 	 	class="weapon_grid_item_name" 	id="${name}_name_T${i}">Name</p> 
+					</div>
+					
+					<div class="weapon_grid_level">
+						<p 		class="weapon_grid_level" 	id="${name}_lvl_T${i}" >Level Required</p>
+					</div>	
+					
+					<div class="weapon_grid_damage">
+						<p 		class="weapon_grid_damage"  	id="${name}_damage_T${i}" >Damage Bonus</p>
+					</div>				
+
+				
+				</div>`;
+			
+			i++;
+		}
+		gridTemplate += `</div>`;
 	}
-	gridTemplate += `</div>`;
+	else {
+		
+		while(i < items){
+			gridTemplate +=
+			`<div class="specificskill_grid" 	  id="${name}_specificskill_grid_T${i}">
+				<div class="specificskill_img" id="${name}_img_T${i}"></div>
+				<div class="specificskill_name"><p class="specificskill_desc" id="${name}_name_T${i}">Name</p> </div>
+				<div class="specificskill_lvl"> <p class="specificskill_desc" id="${name}_lvl_T${i}" >Level</p></div>
+				<div class="specificskill_exp">	<p class="specificskill_exp"  id="${name}_exp_T${i}" >EXP</p>	 </div>
+				<div class="specificskill_desc"><p class="specificskill_desc" id="${name}_desc_T${i}">Descr</p></div>
+			
+			</div>`;
+			
+			i++;
+		}
+		gridTemplate += `</div>`;
+	}
 	return gridTemplate;
 }
 
@@ -482,139 +544,271 @@ const OpenArcherySkillGuide = function(){
 	
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<p class="content_rewrite">Archery is designed to do damage from afar with little risk.</p>
+		<p class="content_rewrite">
+			The Archery skill will help you do damage to your enemies from afar. 
+			While you might lose the distance advantage in a fight with a sorcerer, archers do well in combat against magical foes as their plant-based armour is good at diffusing elemental energy.
+			However, archers should be wary when fighting in close quarters, as a warrior's metal armour is harder to penetrate.
+			As you gain experience you will be able to deal more damage, use more powerful weapons and learn special techniques that will make sure that enemies keep their distance.
+		</p>
 		
 		<div class="skillguide_section">
-			<header class="skillguide_section_header">
-				<h2>Bows</h2>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			
-			<p>As your Archery skill improves, you can use stronger bows. You can create stronger bows using the Fletching skill.</p>
-			
+			<h2>Bows</h2>
+			<p>
+				As an Archer, bows are the most versatile tools for shooting your enemies from afar.
+				They're quick to fire and can serve as a melee weapon in a pinch if someone gets too close or you run out of ammunition.
+				Bows are held in both hands, so you won't be able to hold a shield for protection.
+			</p>
+			<p>
+				As your Archery skill improves, you will be able to wield stronger bows that can deal more damage to your opponents. 
+				You can create stronger bows using the Fletching and Crafting skills or you can buy them from players and shops.
+			</p>
 			<div class="specificskill_grid_div">
 				${createGrid("archeryBows", 11)}
 			</div>
 		</div>
-	`;
-	
-	document.querySelector("#archeryBows_img_T0").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST0.png">`; 	document.querySelector("#archeryBows_name_T0").innerHTML = "Dridych Bow";		document.querySelector("#archeryBows_lvl_T0").innerHTML = "1";
-	document.querySelector("#archeryBows_img_T1").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST1.png">`; 	document.querySelector("#archeryBows_name_T1").innerHTML = "Redring Bow";		document.querySelector("#archeryBows_lvl_T1").innerHTML = "10";
-	document.querySelector("#archeryBows_img_T2").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST2.png">`; 	document.querySelector("#archeryBows_name_T2").innerHTML = "Arnach Bow";		document.querySelector("#archeryBows_lvl_T2").innerHTML = "20";
-	document.querySelector("#archeryBows_img_T3").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST3.png">`; 	document.querySelector("#archeryBows_name_T3").innerHTML = "Twainleaf Bow";		document.querySelector("#archeryBows_lvl_T3").innerHTML = "30";
-	document.querySelector("#archeryBows_img_T4").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST4.png">`; 	document.querySelector("#archeryBows_name_T4").innerHTML = "Barowin Bow";		document.querySelector("#archeryBows_lvl_T4").innerHTML = "40";
-	document.querySelector("#archeryBows_img_T5").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST5.png">`; 	document.querySelector("#archeryBows_name_T5").innerHTML = "Augerwood Bow";		document.querySelector("#archeryBows_lvl_T5").innerHTML = "50";
-	document.querySelector("#archeryBows_img_T6").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST6.png">`; 	document.querySelector("#archeryBows_name_T6").innerHTML = "Wahieyle Bow";		document.querySelector("#archeryBows_lvl_T6").innerHTML = "60";
-	document.querySelector("#archeryBows_img_T7").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST7.png">`; 	document.querySelector("#archeryBows_name_T7").innerHTML = "Nadela Bow";		document.querySelector("#archeryBows_lvl_T7").innerHTML = "70";
-	document.querySelector("#archeryBows_img_T8").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST8.png">`; 	document.querySelector("#archeryBows_name_T8").innerHTML = "Sunderfrond Bow";	document.querySelector("#archeryBows_lvl_T8").innerHTML = "80";
-	document.querySelector("#archeryBows_img_T9").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWST9.png">`;	document.querySelector("#archeryBows_name_T9").innerHTML = "Evehnscrest Bow";	document.querySelector("#archeryBows_lvl_T9").innerHTML = "90";
-	document.querySelector("#archeryBows_img_T10").innerHTML = `<img class="specificskill_img" src="img/items/BOWS/BOWSTX.png">`; 	document.querySelector("#archeryBows_name_T10").innerHTML = "Dayveil Bow";		document.querySelector("#archeryBows_lvl_T10").innerHTML = "100";
 
-	document.querySelector("#specificskill_main").innerHTML += 
-	`	
-		<h2>Arrows</h3>
-		<p>As your Archery skill improves, you can use stronger arrows. You can create stronger arrows using the Fletching and Smithing skills.</p>
+		<div class="skillguide_section">
+			<h2>Arrows</h3>
+			<p>
+				Arrows are required to attack enemies from a distance with a bow.
+				Arrows can be stored in your quiver and are lost as you fire them into your enemies.
+				They have a chance to snap upon hitting an enemy but you'll be able to recover unbroken arrows from enemies once you defeat them.
+				Additionally you can use your Chemistry skills to coat them in a variety of different poisons that will do damage over time.
+			</p>
+			<p>
+				As your Archery skill improves, you will be able to use stronger arrows. 			
+				You can create stronger arrows using the Fletching and Smithing skills or you can buy them from players and shops.
+			</p>
+
+			<div class="specificskill_grid_div">
+				${createGrid("archeryArrows", 11)}
+			</div>
+
+		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Arrows</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("archeryArrows", 11)}
+		<div class="skillguide_section">
+			<h2>Crossbows</h3>
+			<p>
+				While not as fast as a bow, use of a crossbow frees up a free hand for you to wield a shield to protect you.
+				A crossbow uses bolts as ammunition, which are less prone to breakage and hit heavier than arrows do.
+				If you think an enemy in full plate armour is inevitably going to invade your personal space, a crossbow is the best choice available for an Archer.
+			</p>
+			<p>
+				As your Archery skill improves, you will be able to use stronger crossbows. 
+				You can create stronger Crossbows using the Fletching, Crafting and Smithing skills or you can buy them from players and shops.
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("archeryCrossbows", 11)}
+			</div>
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Crossbow Bolts</h3>
+			<p>
+				Bolts are required to attack enemies from a distance with a crossbow.
+				Bolts can be stored in your quiver and are lost as you fire them into your enemies.	
+				They're less likely to be broken from the impact so you'll be able to recover them from enemies once you defeat them.		
+				As they are made out of metal they naturally do more damage than an arrow of the same tier, but they also have a slightly reduced range due to their weight.
+			</p>
+			<p>
+				As your Archery skill improves, you will be able to use stronger bolts.
+				You can create stronger crossbow bolts using the Fletching and Smithing skills or you can buy them from players and shops.
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("archeryBolts", 11)}
+			</div>
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Archery Armour</h3>
+			<p>
+				As your Endurance skill improves, you will be able to use stronger armour.
+				You can create stronger crossbow bolts using the Fletching and Smithing skills or you can buy them from players and shops.
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("archeryArmour", 11)}
+			</div>
 		</div>
 	`;
-		
-	document.querySelector("#archeryArrows_img_T0").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT0.png">`;	document.querySelector("#archeryArrows_name_T0").innerHTML = "Tokanum Arrows";		document.querySelector("#archeryArrows_lvl_T0").innerHTML = "1";
-	document.querySelector("#archeryArrows_img_T1").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT1.png">`;	document.querySelector("#archeryArrows_name_T1").innerHTML = "Sachium Arrows";		document.querySelector("#archeryArrows_lvl_T1").innerHTML = "10";
-	document.querySelector("#archeryArrows_img_T2").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT2.png">`;	document.querySelector("#archeryArrows_name_T2").innerHTML = "Perseum Arrows";		document.querySelector("#archeryArrows_lvl_T2").innerHTML = "20";
-	document.querySelector("#archeryArrows_img_T3").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT3.png">`;	document.querySelector("#archeryArrows_name_T3").innerHTML = "Fortifidium Arrows";	document.querySelector("#archeryArrows_lvl_T3").innerHTML = "30";
-	document.querySelector("#archeryArrows_img_T4").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT4.png">`;	document.querySelector("#archeryArrows_name_T4").innerHTML = "Aglemium Arrows";		document.querySelector("#archeryArrows_lvl_T4").innerHTML = "40";
-	document.querySelector("#archeryArrows_img_T5").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT5.png">`;	document.querySelector("#archeryArrows_name_T5").innerHTML = "Ukinum Arrows";		document.querySelector("#archeryArrows_lvl_T5").innerHTML = "50";
-	document.querySelector("#archeryArrows_img_T6").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT6.png">`;	document.querySelector("#archeryArrows_name_T6").innerHTML = "Melium Arrows";		document.querySelector("#archeryArrows_lvl_T6").innerHTML = "60";
-	document.querySelector("#archeryArrows_img_T7").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT7.png">`;	document.querySelector("#archeryArrows_name_T7").innerHTML = "Frauws Arrows";		document.querySelector("#archeryArrows_lvl_T7").innerHTML = "70";
-	document.querySelector("#archeryArrows_img_T8").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT8.png">`;	document.querySelector("#archeryArrows_name_T8").innerHTML = "Pyranidium Arrows";	document.querySelector("#archeryArrows_lvl_T8").innerHTML = "80";
-	document.querySelector("#archeryArrows_img_T9").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWT9.png">`;	document.querySelector("#archeryArrows_name_T9").innerHTML = "Aresem Arrows";		document.querySelector("#archeryArrows_lvl_T9").innerHTML = "90";
-	document.querySelector("#archeryArrows_img_T10").innerHTML = `<img class="specificskill_img" src="img/items/ARRW/ARRWTX.png">`;	document.querySelector("#archeryArrows_name_T10").innerHTML = "Ellexium Arrows";	document.querySelector("#archeryArrows_lvl_T10").innerHTML = "100";
+	
+	document.querySelector("#archeryArrows_img_T0").src = "img/items/ARRW/ARRWT0.png";	document.querySelector("#archeryArrows_name_T0").innerHTML = "Tokanum Arrows";	
+	document.querySelector("#archeryArrows_lvl_T0").innerHTML = "1";					document.querySelector("#archeryArrows_damage_T0").innerHTML = "0";
+	
 }
 
 const OpenEnduranceSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Archery Armour</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("archeryArmour", 11)}
+	`	
+		<div class="skillguide_section">
+			<h2>Archery Armour</h3>
+			
+			<p>
+			</p>	
+			
+			<div class="specificskill_grid_div">
+				${createGrid("archeryArmour", 11)}
+			</div>
 		</div>
 		
-		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Melee Armour</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("meleeArmour", 11)}
+		<div class="skillguide_section">
+			<h2>Melee Armour</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("meleeArmour", 11)}
+			</div>
 		</div>
 		
-		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Maleficium Armour</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("maleficiumArmour", 11)}
+		<div class="skillguide_section">
+			<h2>Maleficium Armour</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("maleficiumArmour", 11)}
+			</div>
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Thaumaturgy Armour</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("thaumaturgyArmour", 11)}
+		<div class="skillguide_section">
+			<h2>Thaumaturgy Armour</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("thaumaturgyArmour", 11)}
+			</div>
 		</div>
 	`;
 }
 
 const OpenHealthSkillGuide = function(){
-	
+	document.querySelector("#specificskill_main").innerHTML = 
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Faster Healing out of combat
+			</p>
+			<p>		
+				Abilities:
+				Curing Debuffs / Reducing Debuff times		
+			</p>
+		</div>
+	`;
 }
 
 const OpenMaleficiumSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Weapons</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("maleficiumWeapons", 11)}
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Elemental Attacks
+				Air Water Earth Fire Electricity 
+			</p>
+			<p>		
+				Debuffs
+				Stagger Slow Blind Burn Paralysis?
+			</p>
+			<p>	
+				Attack Combinations
+				Air+Water Air+Earth Air+Fire Water+Earth Water+Electricity Earth+Fire?
+			</p>
 		</div>
+				
+		<div class="skillguide_section">
+			<h2>Maleficium Weapons</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("maleficiumWeapons", 11)}
+			</div>
+		</div>	
+
+		<div class="skillguide_section">
+			<h2>Maleficium Armour</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("maleficiumArmour", 11)}
+			</div>
+		</div>			
 	`;
 }
 
 const OpenMeleeSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Weapons</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("meleeWeapons", 11)}
+		<div class="skillguide_section">
+			<h2>Melee Weapons</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("meleeWeapons", 11)}
+			</div>
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Melee Armour</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("meleeWeapons", 11)}
+			</div>
 		</div>
 	`;
 }
 
 const OpenThaumaturgySkillGuide = function(){
-	document.querySelector("#specificskill_main").innerHTML = e
+	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Weapons</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("thaumaturgyWeapons", 11)}
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p>
+			</p>
+			
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Staves</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("thaumaturgyWeapons", 11)}
+			</div>
+			
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Armour</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("thaumaturgyArmour", 11)}
+			</div>
+			
 		</div>
 	`;
 }
@@ -622,49 +816,100 @@ const OpenThaumaturgySkillGuide = function(){
 const OpenDowsingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = `
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Positive Energy</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("light", 11)}
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Energy destablisation:
+				Coerce / Force Energy to take on elemental properties, basically making them runes/ammo for spells			
+			</p>
+			
+			<p> 
+				Memories:
+				Rare chance to find memories while training
+				Learn more about the world / Rella
+				Discover her hidden areas?
+			</p>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header>
-				<h3 class="specificskill_grid_title">Negative Energy</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("dark", 11)}
+		<div class="skillguide_section">
+			<h2>Light Energy</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("light", 11)}
+			</div>
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Dowsing Rods</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("dowsingRods", 11)}
+		<div class="skillguide_section">
+			<h2>Dark Energy</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("dark", 11)}
+			</div>
+			
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Rods</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("dowsingRods", 11)}
+			</div>
+			
 		</div>
 	`
 }
 
 const OpenFishingSkillGuide = function(){
+
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Fish</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("fish", 11)}
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Trophies:
+				Rare chance to catch a big fish.
+				Provides a better catch rate for that fish within the area.				
+			</p>
+			
+			<p> 
+				Scales:
+				Used in Chemistry to make (Fishing?)potions.
+			</p>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Fishing Rods</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("fishingRods", 11)}
+		<div class="skillguide_section">
+			<h2>Fish</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("fish", 11)}
+			</div>
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Fishing Rods</h3>
+			
+			<p>
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("fishingRods", 11)}
+			</div>
 		</div>
 	`;
 }
@@ -672,20 +917,46 @@ const OpenFishingSkillGuide = function(){
 const OpenForestrySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Trees</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("trees", 11)}
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Seeds:
+				Medium chance to recieve tree seeds when they are felled
+			</p>
+			
+			<p> 
+				Overgrowth:
+				Can access hidden areas blocked off at certain levels, higher leveled places have better resources.
+			</p>
+			
+			<p> 
+				Bark:
+				Used in Chemistry to make (Forestry?)potions.
+			</p>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Axes</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("axes", 11)}
+		<div class="skillguide_section">
+			<h2>Trees</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("trees", 11)}
+			</div>
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Axes</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("axes", 11)}
+			</div>
 		</div>
 	`;
 			
@@ -694,45 +965,110 @@ const OpenForestrySkillGuide = function(){
 const OpenHorticultureSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Bushes</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("bushes", 11)}
+		<div class="skillguide_section">
+			<h2>Bushes</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("bushes", 11)}
+			</div>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Trees</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("growTrees", 11)}
+		<div class="skillguide_section">
+			<h2>Herbs</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("growHerbs", 11)}
+			</div>
+			
 		</div>
+		
+		<div class="skillguide_section">
+			<h2>Trees</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("growTrees", 11)}
+			</div>
+			
+		</div>
+		
+		
 	`;
 }
 
 const OpenHuntingSkillGuide = function(){
-	
+	document.querySelector("#specificskill_main").innerHTML = 
+	`
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Trophies:
+				Rare chance to catch a big creature.
+				Provides a better catch rate for that creature within the area.	
+			</p>
+			
+			<p> 
+				Furs:
+				Can be added to armour of the same tier, improves defence capabilities.
+			</p>
+			
+			<p> 
+				Meat:
+				Creatures are harder to catch than fish by default (more steps involved?) Meat provides slightly more hp upon cooking than fish of the same tier.
+			</p>
+			
+			<p> 
+				Butterfly / Moth Wings:
+				Used in Chemistry to make (hunting?)potions.
+			</p>
+			
+		</div>
+	`;
 }
 
 const OpenMiningSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Ores</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("ores", 11)}
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Cave Ins:
+				Can access hidden areas blocked off at certain levels, higher leveled places have better resources.
+			</p>
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Pickaxes</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("pickaxes", 11)}
+		<div class="skillguide_section">
+			<h2>Ores</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("ores", 11)}
+			</div>
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Pickaxes</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("pickaxes", 11)}
+			</div>
+			
 		</div>
 	`;
 }
@@ -744,72 +1080,162 @@ const OpenChemistrySkillGuide = function(){
 const OpenCookerySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Fish</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("cookFish", 11)};
+		<div class="skillguide_section">
+			<h2>Fish</h3>
+			
+			<p> 
+			</p>
+						
+			<div class="specificskill_grid_div">
+				${createGrid("cookFish", 11)};
+			</div>
+		
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Meat</h3>
+			
+			<p> 
+			</p>
+						
+			<div class="specificskill_grid_div">
+				${createGrid("cookMeat", 11)};
+			</div>
+		
 		</div>
 	`;
 }
 
 const OpenCraftingSkillGuide = function(){
-	
+	document.querySelector("#specificskill_main").innerHTML = 
+	`	
+		<div class="skillguide_section">
+			<h2>Archery Armour</h3>
+			
+			<p> 
+			</p>
+						
+			<div class="specificskill_grid_div">
+				${createGrid("craftFibres", 11)};
+			</div>
+		
+		</div>l
+	`;
 }
 
 const OpenFletchingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Bows</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("fletchBows", 11)};
+		<div class="skillguide_section">
+			<h2>Bows</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("fletchBows", 11)};
+			</div>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Arrows</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("fletchArrows", 11)};
+		<div class="skillguide_section">
+			<h2>Arrows</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("fletchArrows", 11)};
+			</div>
+			
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Crossbows</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("fletchCrossbows", 11)};
+			</div>
+			
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Bolts</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("fletchBolts", 11)};
+			</div>
+			
 		</div>
 	`;
 }
 
 const OpenImbuingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
-	`	<div class="specificskill_grid_div">
-			<header>
-				<h3 class="specificskill_grid_title">Thaumaturgy Staves</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("lightWeapons", 11)}
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Rename Skill:
+				Manifestation
+			</p>
+			
+		</div>
+	
+		<div class="skillguide_section">
+			<h2>Thaumaturgy Staves</h3>
+			
+			<p> 
+			</p>
+			
+			div class="specificskill_grid_div">
+				${createGrid("lightStaves", 11)}
+			</div>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Maleficium Staves</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
+
+		<div class="skillguide_section">
+			<h2>Thaumaturgy Armour</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("lightArmour", 11)}
+			</div>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Thaumaturgy Robes</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("lightArmour", 11)}
+		<div class="skillguide_section">
+			<h2>Maleficium Staves</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("darkStaves", 11)}
+			</div>
+			
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Maleficium Robes</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("darkArmour", 11)}
+		<div class="skillguide_section">
+			<h2>Maleficium Armour</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("darkArmour", 11)}
+			</div>
+			
 		</div>
 	`;
 }
@@ -817,53 +1243,126 @@ const OpenImbuingSkillGuide = function(){
 const OpenSmithingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Weapons</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("meleeWeapons", 11)}
+		<div class="skillguide_section">
+			<h2>Weapons</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("Weapons", 11)}
+			</div>
 		</div>
 		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Armour</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("meleeArmour", 11)}
+		<div class="skillguide_section">
+			<h2>Armour</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("meleeArmour", 11)}
+			</div>
+			
+		</div>
+		
+		<div class="skillguide_section">
+			<h2>Tools</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("Tools", 11)}
+			</div>
+			
 		</div>
 	`;
 }
 
 const OpenAthleticismSkillGuide = function(){
-	
+	document.querySelector("#specificskill_main").innerHTML = 
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Running Items:
+				Taking an item from one npc to another like a mail system. Rewards exp and money
+			</p>
+			
+			<p> 
+				Faster base movement speed:
+				Player speed improves as they level (100% - ~110%)
+			</p>
+			
+		</div>
+	`;
 }
 
 const OpenBountyHuntingSkillGuide = function(){
-
+	document.querySelector("#specificskill_main").innerHTML = 
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Rename Skill:
+				Headhunting
+			</p>
+			
+			<p>
+				Special Contracts:
+				Occasionally gives the player the option to take down a boss mob such as a bandit leader.
+				Only one kill but gives improved reards.
+			</p>
+			
+			<p>
+				Special Currency:
+				Used to buy bounty hunting related items and abilites
+			</p>
+			
+			<p>
+				Damage buffs to certain enemies:
+				As you gain more experience? / complete more contracts? you get a passive damage buff (100% - ~105%) towards enemies of that type.
+			</p>
+			
+			<p> 
+				Trophies / Trinkets:
+				Rare chance to take a trophy or trinket upon death. 
+				Might be linked to special contract bosses
+				Provides inproved damage buffs to certain enemy types within the area.	
+			</p>
+			
+		</div>
+	`;
 }
 
 const OpenCamaraderieSkillGuide = function(){
-	
+	document.querySelector("#specificskill_main").innerHTML = 
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+			</p>
+		</div>
+	`;
 }
 
 const OpenCarpentrySkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Planks</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("planks", 11)};
-		</div>
-		
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Nails</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("planks", 11)};
+		<div class="skillguide_section">
+			<h2>Materials</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("planks", 11)};
+			</div>
+			
 		</div>
 	`;
 }
@@ -871,16 +1370,62 @@ const OpenCarpentrySkillGuide = function(){
 const OpenFirelightingSkillGuide = function(){
 	document.querySelector("#specificskill_main").innerHTML = 
 	`	
-		<div class="specificskill_grid_div">
-			<header class="specificskill_grid_header">
-				<h3 class="specificskill_grid_title">Fires</h3>
-				<button class="specificskill_grid_dropdown"></button>
-			</header>
-			${createGrid("burnLogs", 11)}
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Incense:
+				Burning different types of incense sticks provide passive buffs when equipped.
+			</p>
+		</div>
+	
+		<div class="skillguide_section">
+			<h2>Fires</h3>
+			
+			<p> 
+			</p>
+			
+			<div class="specificskill_grid_div">
+				${createGrid("burnLogs", 11)}
+			</div>
 		</div>
 	`;
 }
 
 const OpenLarcenySkillGuide = function(){
+	document.querySelector("#specificskill_main").innerHTML = 
+	`	
+		<div class="skillguide_section">
+			<h2>Skill Ideas</h3>
+			
+			<p> 
+				Hidden Pockets:
+				More money is found on enemies as you gain more larceny experience (100% - ~110%)
+			</p>
+			
+			<p> 
+				Fences:
+				Stolen items can't be sold directly to shops or players, they can be sold to fences instead.
+				Higher leveld thieves can sell to fences who offer more money
+			</p>
+			
+			<p> 
+				Laundering:
+				Stolen items can't be sold directly to shops or players, but they can be laundered so that they can.
+				Costs a bit of money to launder items
+				Higher level thieves can sell to fences who cost less money
+			</p>
+			
+		</div>
+	`;
+}
+
+const hideSkillGrid = function(theGrid){
+	console.log(`#specificskill_grid_${theGrid}`);
+	console.log(document.querySelector(`#specificskill_grid_${theGrid}`).style.display);
 	
+	switch(document.querySelector(`#specificskill_grid_${theGrid}`).style.display){
+		case "none":	document.querySelector(`#specificskill_grid_${theGrid}`).style.display = "block"; 	break;	
+		case "block":	document.querySelector(`#specificskill_grid_${theGrid}`).style.display = "none";	break;
+	}
 }

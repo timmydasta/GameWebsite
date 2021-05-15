@@ -98,22 +98,45 @@ a.guide_breadcrumb:hover{
 ********************************************************/
 
 article.skillguide{
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	background-color:rgba(198, 144, 14, 1);
 	padding: 0.5em;
 }
 
 header.guide_header{
-	display: flex;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
+}
+
+ul.guide_header_breadcrumbs{
+	display:flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a.guide_header_breadcrumb{
+	margin: 0 0.3em 0 0;
+}
+
+a.guide_header_breadcrumb:hover{
+	color:#FFFFFF;
+}
+
+span.guide_header_title{
+	display:flex;
+	margin-top: 5px;
+}
+
+img.guide_header_img{
+	margin: auto 10px auto 0;
+	width: 80px;
+	height: 80px;
 }
 
 h1.guide_header_title{
-	margin: 0 0.2em 0 0;
-}
-
-h1.guide_header_title:hover{
-	color:#FFFFFF;
+	margin: auto 0.2em auto 0;
+	font-size: 80px;
 }
 
 p.skillguide_header_text{
@@ -200,8 +223,10 @@ a.skillguide_skill_button:hover{
 }
 
 article.specificskill_main{
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	padding: 0.5em;
+	background-color:rgba(198, 144, 14, 1);
 }
 
 header.specificskill_header{
@@ -209,12 +234,6 @@ header.specificskill_header{
 	margin: 0 auto 10px auto;
 	background-color: #72757d;
 	border-bottom: 2px solid black;
-}
-
-img.specificskill_header_img{
-	margin: auto 10px;
-	width: 60px;
-	height: 60px;
 }
 
 h2.specificskill_header_title{
@@ -230,14 +249,7 @@ button.specificskill_top{
 }
 
 div.specificskill_grid_div{
-	border: 1px solid black;
 	margin: 0 auto 0.5em auto;
-}
-
-header.specificskill_grid_header{
-	display: flex;
-	background-color: #72757d;
-	border-bottom: 2px solid black;
 }
 
 h3.specificskill_grid_title{
@@ -254,50 +266,90 @@ header.skillguide_section_header{
 }
 
 button.specificskill_grid_dropdown{
-	min-width: 45px;
-	min-height: 45px;
+	display: flex;
+	margin: 5px 5px 5px auto;
+	min-width: 30px;
+	min-height: 30px;
 }
 
-div.specificskill_grid{
+header.weapon_grid_header{
 	display: grid;
-	grid-template-areas:
-    'specificskill_img specificskill_name specificskill_lvl specificskill_exp'
-    'specificskill_img specificskill_desc specificskill_desc specificskill_desc';
+	height: 2.5em;
+	border: 1px solid black;
+	background-color: #72757d;
+	grid-template-areas: 'weapon_grid_header_item weapon_grid_header_level weapon_grid_header_damage';
+	grid-template-columns: 60% 15% 25%;
 }
 
-div.specificskill_img{
-	height: 70px;
-	width: 70px;
-	grid-area: specificskill_img;
+div.weapon_grid_header_item{
+	display: flex;
+	border-right: 1px solid black;
+	margin-bottom: 1px;
+	grid-area: weapon_grid_header_item;
 }
 
-img.specificskill_img{
-	height: 90%;
-	margin: auto;
+div.weapon_grid_header_level{
+	display: flex;
+	border-right: 1px solid black;
+	margin-bottom: 1px;
+	grid-area: weapon_grid_header_level;
 }
 
-div.specificskill_name{
-	grid-area: specificskill_name;
+div.weapon_grid_header_damage{
+	display: flex;
+	grid-area: weapon_grid_header_damage;
+}
+	
+p.weapon_grid_header_title{
+	margin: auto 5px;
 }
 
-div.specificskill_lvl{
-	background-color: #00FF00;
-	grid-area: specificskill_lvl;
+div.weapon_grid_row{
+	width: 100%;
+	margin: 0;
+	border: 1px solid black;
+	border-top: none;
+	display: grid;
+	grid-template-areas:'weapon_grid_item weapon_grid_level weapon_grid_damage';
+	grid-template-columns: 60% 15% 25%;
 }
 
-div.specificskill_exp{
-	grid-area: specificskill_exp;
+div.weapon_grid_item{
+	display: flex;
+	border-right: 1px solid black;
+	grid-area: weapon_grid_item;
 }
 
-div.specificskill_desc{
-	background-color: #FF0000;
-	grid-area: specificskill_desc;
+img.weapon_grid_item_img{
+	height: 35px;
+	width: 35px;
+	margin: 2px 0 2px 5px;
 }
 
-p.specificskill_name, p.specificskill_lvl, p.specificskill_exp, p.specificskill_desc{
-	font-size: 18px;
-	margin: 0 auto;
+p.weapon_grid_item_name{
+	margin: auto 5px;
 }
+
+div.weapon_grid_level{
+	display: flex;
+	border-right:1px solid black;
+	grid-area: weapon_grid_level;
+}
+
+p.weapon_grid_level{
+	margin: auto 5px;
+}
+
+div.weapon_grid_damage{
+	display: flex;
+	grid-area: weapon_grid_damage;
+}
+
+p.weapon_grid_damage{
+	margin: auto 5px;
+}
+
+
 
 /** COMBAT GUIDE PAGE
 ********************************************************/

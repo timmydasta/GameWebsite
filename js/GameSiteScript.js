@@ -40,14 +40,13 @@ const start = function(){
 }
 
 const findAllNews = function(totalNews){
-	$.getJSON('https://more-pig.firebaseio.com/WebsiteDB.json', function(result){
+	$.getJSON('https://more-pig.firebaseio.com/WebsiteDB/NewsPosts.json', function(result){
 				
 		let i = 0;
 		while( i < Object.keys(result).length){
 						
 			let newsPost = Object.entries(result)[i];
-			console.log(newsPost);
-			
+		
 			let newsTitle = newsPost[1].Title;
 			let newsDate = newsPost[1].Date;
 			let newsLink = newsPost[1].Link;
@@ -58,6 +57,7 @@ const findAllNews = function(totalNews){
 			newsArticles.push(newNews);
 			i++;
 		}
+		newsArticles.reverse();
 		openNews();
 	})
 }
@@ -90,9 +90,8 @@ const findAllUsers = function(){
 				j++;
 			}
 			
-			newUser = new User(user[1].Username, skills, totalEXP, totalLevel);
+			newUser = new User(user[1].General.Username, skills, totalEXP, totalLevel);
 			users.push(newUser);
-			//console.log(newUser);
 
 			i++;
 		}
@@ -661,7 +660,7 @@ const comparePlayers = function(){
 	
 	let userOne = document.querySelector("#HS_CompareInputOne").value;	let userTwo = document.querySelector("#HS_CompareInputTwo").value;
 	
-	userOne = "timmydasta"; userTwo = "zinch";
+	//userOne = "timmydasta"; userTwo = "zinch";
 	
 	document.querySelector("#hs-player1-warning").innerHTML = "";	document.querySelector("#hs-player2-warning").innerHTML = "";
 	
@@ -911,27 +910,35 @@ const signIn = function(){
 	}
 	
 	if(theUsername != "" && thePassword != ""){
-		$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}.json`, function(result){
+		$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}/General.json`, function(result){
 
 			if(result == null){
 				document.querySelector("#signin-warning-username").innerHTML = "That user doesn't exist";
 			}
 			else{
+				let username = result.Username;
+				let userpassword = result.Password;
 				
-				$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}/Password.json`, function(result){
-					
-					if(result != thePassword){
-						document.querySelector("#signin-warning-password").innerHTML = "You have entered an incorrect password";
-					}
-					else{
-		
-						$.getJSON(`https://more-pig.firebaseio.com/Users/${theUsername.toUpperCase()}/Username.json`, function(result){
-							activeUser = result;
-							document.querySelector("#nav_button_account").innerHTML = activeUser;
-							openAccount();
-						});
-					}
-				});
+				if(result.Password != thePassword){
+					document.querySelector("#signin-warning-password").innerHTML = "You have entered an incorrect password";
+				}
+				else{
+					activeUser = document.querySelector("#nav_button_account").innerHTML = result.Username;
+
+					$.getJSON(`https://more-pig.firebaseio.com/WebsiteDB/UserRanks/${activeUser}.json`, function(result){
+								
+						if(result == "Developer"){
+							document.querySelector("#body").innerHTML = 
+							`
+							<div id="admin_toolbar">
+								<h2>Admin Toolbar</h2>
+							</div>
+							` + document.querySelector("#body").innerHTML;
+															
+						}
+					});
+					openAccount();
+				}
 			}
 		});
 	}

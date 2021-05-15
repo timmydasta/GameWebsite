@@ -22,7 +22,7 @@
 			
 	</head>
 
-	<body>
+	<body id="body">
 		
 		<header class="main-header">
 			<nav class="navbar-outer">
@@ -55,18 +55,32 @@
 					<li class="nav_button nav_button_account">				
 						<a class="nav_button nav_button_account" id="nav_button_account" onclick="openAccount()">Account</a>
 					</li>
+					<li class="nav_button nav_button_account">				
+						<a class="nav_button nav_button_account" id="nav_button_account" target="_blank" href="https://drive.google.com/file/d/1y-oMuRLJ6G-PSTI4TOprhFQUKYG88jZn/view?usp=sharing">Download</a>
+					</li>
 				
 				</ul>
+				
+				<a class="navbar-mobile-button"></a>
+				<ul class="navbar-mobile">
+					<li class="nav_button_mobile">
+						<a class="nav_button_mobile" onclick="openAccount()">News</a>
+					</li>
+					
+					<li class="nav_button_mobile">
+						<a class="nav_button_mobile" onclick="openAccount()">Game Guide</a>
+					</li>
+					
+					<li class="nav_button_mobile">
+						<a class="nav_button_mobile" onclick="openAccount()">HighScores</a>
+					</li>
+					
+					<li class="nav_button_mobile">
+						<a class="nav_button_mobile" onclick="openAccount()">Account</a>
+					</li>
+				</ul>
 			</nav>
-			
-			<select>
-				<option value="" selected="selected"></option>
-				<option onclick="openAccount()">Account</option>
-			</select>
-		
-			<div id="admin_toolbar">
-			</div>
-			
+					
 		</header>
 				
 		<main id="main">
