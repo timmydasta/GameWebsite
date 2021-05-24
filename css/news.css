@@ -4,6 +4,7 @@
 article.news_article{
 	margin: 0 auto;
 	display: flex;
+	min-height: 126px;
 }
 div.news{
 	border-bottom: 1px solid black;
@@ -21,8 +22,8 @@ h2.news_title{
 
 div.news_img{
 	margin: 0.5em;
-	min-width: 160px;
-	min-height: 100px;
+	min-width: 128px;
+	min-height: 80px;
 	width: 25%;
 	border: 1px solid black;
 	overflow: hidden;

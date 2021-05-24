@@ -99,7 +99,9 @@ const findAllUsers = function(){
 }
 
 const openNews = function(){
-		
+	
+	document.querySelector("#navbar-mobile").style.display = "none";
+	
 	document.getElementById("main").innerHTML = 
 	`
 		<h1 class="page-title">News</h1>
@@ -150,6 +152,9 @@ const openNews = function(){
 }
 
 const openNewsArchive = function(){
+	
+	document.querySelector("#navbar-mobile").style.display = "none";
+
 	document.getElementById("main").innerHTML = 
 	`
 		<h1 class="page-title">News Archive</h1>
@@ -210,6 +215,8 @@ const loadNewsPage = function(theLink){
 }
 
 const openGuide = function(){
+
+	document.querySelector("#navbar-mobile").style.display = "none";
 
 	document.getElementById("main").innerHTML =
 	`
@@ -474,6 +481,8 @@ const openQuestGuide = function(){
 
 const openHS = function(){
 	
+	document.querySelector("#navbar-mobile").style.display = "none";
+
 	document.getElementById("main").innerHTML = 
 	`<div class="HighScores">
 			
@@ -798,6 +807,8 @@ const openMedia = function(){
 
 const openAccount = function(){
 	
+	document.querySelector("#navbar-mobile").style.display = "none";
+
 	if(activeUser == ""){
 		document.getElementById("main").innerHTML = 
 		`
