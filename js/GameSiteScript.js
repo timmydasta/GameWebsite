@@ -16,7 +16,6 @@ class NewsArticle {
 let users = new Array();
 
 class User {
-	
 	constructor(theUsername, theSkills, theTotalEXP, theTotalLevel){
 		this.username = theUsername;
 		this.skills = theSkills;
@@ -26,7 +25,6 @@ class User {
 }
 
 class Skill{
-	
 	constructor(theName, theEXP, theLevel){
 		this.skillName = theName;
 		this.exp = theEXP;
@@ -35,6 +33,7 @@ class Skill{
 }
 
 const start = function(){
+	console.log(screen.width);
 	findAllNews();
 	findAllUsers();
 }
@@ -1005,6 +1004,15 @@ const logOut = function(){
 	activeUser= "";
 	document.querySelector("#nav_button_account").innerHTML = `Account`;
 	openAccount();
+}
+
+const openMobileNavbar = function(){
+	if(document.querySelector("#navbar-mobile").style.display == "block"){
+		document.querySelector("#navbar-mobile").style.display = "none";
+	}
+	else {
+		document.querySelector("#navbar-mobile").style.display = "block";
+	}
 }
 
 start();

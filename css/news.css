@@ -46,6 +46,7 @@ div.news_info{
 p.news_brief{
 	margin: 0 0 0.5em 0;
 	height: 40px;
+	font-size: 16px;
 }
 
 div.news_typedate{

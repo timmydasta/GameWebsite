@@ -3,6 +3,7 @@
 	<head>
 		<title>Tims Game: Home</title>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="Timmydasta">
 		
@@ -19,7 +20,6 @@
 		<script src="js/jquery.js" defer></script>
 		<script src="js/SkillGuideScript.js" defer></script>
 		<script src="js/GameSiteScript.js" defer></script>
-			
 	</head>
 
 	<body id="body">
@@ -55,14 +55,14 @@
 					<li class="nav_button nav_button_account">				
 						<a class="nav_button nav_button_account" id="nav_button_account" onclick="openAccount()">Account</a>
 					</li>
-					<li class="nav_button nav_button_account">				
-						<a class="nav_button nav_button_account" id="nav_button_account" target="_blank" href="https://drive.google.com/file/d/1y-oMuRLJ6G-PSTI4TOprhFQUKYG88jZn/view?usp=sharing">Download</a>
+					<li class="nav_button nav_button_download">				
+						<a class="nav_button nav_button_download" id="nav_button_download" target="_blank" href="https://drive.google.com/file/d/1y-oMuRLJ6G-PSTI4TOprhFQUKYG88jZn/view?usp=sharing">Download</a>
 					</li>
 				
 				</ul>
 				
-				<a class="navbar-mobile-button"></a>
-				<ul class="navbar-mobile">
+				<a class="navbar-mobile-button" onclick="openMobileNavbar()"></a>
+				<ul class="navbar-mobile" id="navbar-mobile">
 					<li class="nav_button_mobile">
 						<a class="nav_button_mobile" onclick="openAccount()">News</a>
 					</li>
@@ -95,4 +95,3 @@
 		
 	</body>
 </html>
-

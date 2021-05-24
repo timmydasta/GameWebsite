@@ -13,9 +13,7 @@ const openSkillGuide = function(){
 	</header>
 		
 	<article class="skillguide">
-		
-
-		
+				
 			<p class="skillguide_header_text content_rewrite">
 				GAMENAME's skills represent your character's capabilities.
 				Performing actions associated with a skill earns you experience points (EXP) in that skill, and as you earn EXP your level in that skill will increase.
